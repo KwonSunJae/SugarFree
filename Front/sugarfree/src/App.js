@@ -5,6 +5,7 @@ import { Route,Link,Routes } from "react-router-dom";
 
 import About from './components/About';
 import Home from './components/Home';
+import { LoginPage } from "./pages/LoginPage";
 
 function App() {
   return (
@@ -19,8 +20,9 @@ function App() {
       </ul>
     
       <Routes>
-      <Route path="/" element={<Home></Home>} />
+      <Route exact path="/" element={<Home></Home>} />
       <Route path="/about" element={<About></About>} />
+      <Route path="/login" element={<LoginPage></LoginPage>}/>
       </Routes>
     </div>
   );

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-function LoginField(){
+const LoginPage = () => {
     const [userInfo, setUserInfo] = useState({
         userId : "",
         userPwd: ""
@@ -18,9 +18,9 @@ function LoginField(){
     );
 }
 
-function InputField({data, onChange}){
+const InputField = ({data, onChange}) => {
 
-    const history = useHistory();
+    // const history = useHistory();
 
     const handleChange = (e) =>{
         const {name, value} = e.target;
@@ -47,7 +47,8 @@ function InputField({data, onChange}){
                 const result = res.data.success;
                 console.log("response : " + result);
                 if(result === "valid"){
-                    history.push("/mainPage");
+                    //로그인 성공하면 페이지 변경, 나중에 추가되면 변경 예정
+                    //history.push("/mainPage");
                 }else{
                     if(result ==="id invalid"){
                         alert("Wrong Id. Please Check Again");
@@ -90,4 +91,4 @@ function InputField({data, onChange}){
     );
 }
 
-export default LoginField;
+export default LoginPage;
