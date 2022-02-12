@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-//import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const LoginPage = () => {
@@ -20,7 +20,7 @@ const LoginPage = () => {
 
 const InputField = ({data, onChange}) => {
 
-    // const history = useHistory();
+    const navigate = useNavigate();
 
     const handleChange = (e) =>{
         const {name, value} = e.target;
@@ -29,6 +29,10 @@ const InputField = ({data, onChange}) => {
             ...data,
             [name] : value
         });
+    };
+
+    const page2Register = () =>{
+        navigate("/register");
     };
 
     const handleClick = (e) =>{
@@ -87,7 +91,8 @@ const InputField = ({data, onChange}) => {
                 onChange={handleChange}
                 value={data.pw}/>
             <br/>
-            <button onClick={handleClick}>Submit</button>
+            <button onClick={page2Register}>Sign Up</button>
+            <button onClick={handleClick}>Sign In</button>
         </form>
     );
 }
