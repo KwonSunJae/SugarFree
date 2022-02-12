@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
+//import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const LoginPage = () => {
-    const [userInfo, setUserInfo] = useState({
-        userId : "",
-        userPwd: ""
+    const [loginInfo, setLoginInfo] = useState({
+        id : "",
+        pw: ""
     });
 
     return (
         <div id='login-div'>
             <fieldset>
-            <legend>Input your Id and Password</legend>
-            <InputField data={userInfo} onChange={setUserInfo}/>
+                <legend>Input your Id and Password</legend>
+                <InputField data={loginInfo} onChange={setLoginInfo}/>
             </fieldset>
         </div>
     );
@@ -33,15 +33,15 @@ const InputField = ({data, onChange}) => {
 
     const handleClick = (e) =>{
         e.preventDefault();
-        if(data.userId === "" || data.userPwd ===""){
+        if(data.id === "" || data.pw ===""){
             alert("Fill out every form");
         }
         else{
             console.log("Sending data to server...")
             //Login API 정해지면 URL 변경하겠음
             axios.post("http://127.0.0.1:5000/login/valid/", {
-                    userId : data.userId,
-                    userPwd : data.userPwd
+                    id : data.id,
+                    pw : data.pw
             })
             .then((res) =>{
                 const result = res.data.success;
@@ -61,8 +61,8 @@ const InputField = ({data, onChange}) => {
                 console.log(error)
             });
             onChange({
-                userId:"",
-                userPwd:""
+                id:"",
+                pw:""
             });
         }
     };
@@ -76,15 +76,16 @@ const InputField = ({data, onChange}) => {
                 placeholder='ID' 
                 name="userId" 
                 onChange={handleChange}
-                value={data.userId}/>
+                value={data.id}/>
             <br/>
             <b>PASSWORD</b>
+            <br/>
             <input
                 type="password"
                 placeholder='PWD' 
                 name="userPwd" 
                 onChange={handleChange}
-                value={data.userPwd}/>
+                value={data.pw}/>
             <br/>
             <button onClick={handleClick}>Submit</button>
         </form>
