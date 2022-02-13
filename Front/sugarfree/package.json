@@ -36,7 +36,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
-  
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Team-Ssery/SugarFree.git",
+  "author": "PL",
+  "license": "MIT"
+
 }
 
