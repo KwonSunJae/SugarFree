@@ -27,7 +27,7 @@ const InputField = ({data, onChange}) => {
         
         onChange({
             ...data,
-            [name] : value
+            [name] : [value]
         });
     };
 
@@ -78,7 +78,7 @@ const InputField = ({data, onChange}) => {
             <input
                 type="text"
                 placeholder='ID' 
-                name="userId" 
+                name="id" 
                 onChange={handleChange}
                 value={data.id}/>
             <br/>
@@ -87,7 +87,7 @@ const InputField = ({data, onChange}) => {
             <input
                 type="password"
                 placeholder='PWD' 
-                name="userPwd" 
+                name="pw" 
                 onChange={handleChange}
                 value={data.pw}/>
             <br/>
