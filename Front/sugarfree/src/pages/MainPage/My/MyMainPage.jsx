@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
 import './MyMainPage.css';
-
+import CustomPopup from "./CustomPopup";
 
 
 const MyMainPage = () => {
 
-  const navigate = useNavigate();
-
-  const shareClick = (e) => {
-    navigate("/share");
-  }
+  const popupCloseHandler = (e) => {
+    setVisibility(e);
+  };
   const [userName, setUserName] = useState("");
   const [myCandyNum, setMyCandyNum] = useState(0);
-  const [clicked, setClicked] = useState(true);
-  const click = () => setClicked(current => !current);
-  const [cclicked, setCclicked] = useState(true);
-  const cclick = () => setCclicked(current => !current);
+  const [visibility, setVisibility] = useState(false);
 
 
   return (
@@ -36,8 +30,19 @@ const MyMainPage = () => {
         <img src={clicked ? "/img/btn_login_light_250.png" : "/img/btn_login_dark_250.png"} height="100" width="100" />
       </button>
   */}
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <button onClick={shareClick}>공유버튼</button>
+
+      <div style={{ display: 'flex', flexDirection: 'row' }} >
+
+        <button onClick={(e) => setVisibility(!visibility)}>공유버튼</button>
+        <CustomPopup className="font1"
+          onClose={popupCloseHandler}
+          show={visibility}
+          title="링크 공유하기"
+        >
+
+          <button>복사하기</button>
+        </CustomPopup>
+
         <p className="font2">링크 공유하기 </p>
       </div>
     </div>
