@@ -9,7 +9,8 @@
 
 .imgbutton {
   background-color: #F2DBD8;
-  margin-left: 50px;
+  margin-left: 20px;
+  margin-right: 0px;
   border: none;
   
 }
@@ -22,9 +23,19 @@
   line-height: 1.0;
   font-size: 20px;
 }
+
 .font2 {
   font-family: 'Gowun Batang', serif;
+  margin-top: 15px;
   margin-left: 20px;
+  color: rgb(63, 61, 61);
+  line-height: 1.0;
+  font-size: 16px;
+}
+.font3 {
+  font-family: 'Gowun Batang', serif;
+  margin-top: 15px;
+  margin-left: 5px;
   color: rgb(63, 61, 61);
   line-height: 1.0;
   font-size: 16px;
