@@ -11,7 +11,7 @@ const MyMainPage = () => {
   const [userName, setUserName] = useState("");
   const [myCandyNum, setMyCandyNum] = useState(0);
   const [visibility, setVisibility] = useState(false);
-
+  const [userUrl, setUserUrl] = useState("");
 
   return (
 
@@ -26,24 +26,19 @@ const MyMainPage = () => {
       <img src={"/img/candyMachine_512.png"} height="450" width="450" alt="candyMachine" />
       <br></br>
 
-      {/*<button onClick={shareClick} onMouseEnter={click} onMouseLeave={click} className="imgbutton" type="button">
-        <img src={clicked ? "/img/btn_login_light_250.png" : "/img/btn_login_dark_250.png"} height="100" width="100" />
-      </button>
-  */}
-
       <div style={{ display: 'flex', flexDirection: 'row' }} >
-
-        <button onClick={(e) => setVisibility(!visibility)}>공유버튼</button>
+        <button className="imgbutton" onClick={(e) => setVisibility(!visibility)}> <img src={"/img/btn_share_light_250.png"} height="40" width="40" /></button>
         <CustomPopup className="font1"
           onClose={popupCloseHandler}
           show={visibility}
           title="링크 공유하기"
         >
+          <p type="text">{userUrl}</p>
+          <button onClick={(e) => setVisibility(!visibility)}>복사하기</button>
 
-          <button>복사하기</button>
         </CustomPopup>
 
-        <p className="font2">링크 공유하기 </p>
+        <p className="font3">링크 공유하기 </p>
       </div>
     </div>
   );
