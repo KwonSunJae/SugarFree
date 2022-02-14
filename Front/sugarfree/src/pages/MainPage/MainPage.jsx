@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import ReactDOM from 'react-dom';
 import './MainPage.css';
 
+
+
 const MainPage = () => {
 
   function loginClick(e) {
@@ -20,17 +22,21 @@ const MainPage = () => {
 
   return (
 
-    <div className="bgc">
+    <div className="bgc" >
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+      </style>
+      <br></br>
+      <p className="font">가입자 수 : {userNum}</p>
+      <p className="font">전달된 선물 수 : {candyNum}</p>
 
-      <h3>가입자 수 : {userNum}</h3>
-      <h3>전달된 선물 수 : {candyNum}</h3>
-
-      <img src={"/img/candyMachine_512.png"} alt="candyMachine" />
+      <img src={"/img/candyMachine_512.png"} height="450" width="450" alt="candyMachine" />
       <br></br>
       <Link to="/home/login">
-        <button onMouseEnter={click} onMouseLeave={click} className="imgbutton" type="button"><img src={clicked ? "/img/btn_login_light_250.png" : "/img/btn_login_dark_250.png"} height="100" width="100" /></button>
+
+        <button onMouseEnter={click} onMouseLeave={click} className="imgbutton" type="button"><img src={clicked ? "/img/btn_login_light_250.png" : "/img/btn_login_dark_250.png"} height="150" width="150" /></button>
       </Link>
-      <button onClick={resisterClick} onMouseEnter={cclick} onMouseLeave={cclick} className="imgbutton" type="button"><img src={cclicked ? "/img/btn_join_light_250.png" : "/img/btn_join_dark_250.png"} height="100" width="100" /></button>
+      <button onClick={resisterClick} onMouseEnter={cclick} onMouseLeave={cclick} className="imgbutton" type="button"><img src={cclicked ? "/img/btn_join_light_250.png" : "/img/btn_join_dark_250.png"} height="150" width="150" /></button>
 
     </div>
   );
