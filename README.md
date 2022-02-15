@@ -20,12 +20,24 @@
 **Front-end**
 
 ![React js](https://blog.kakaocdn.net/dn/c5yaqz/btqXXVBqHvp/SEBAeKYrkouV6xZGcWDa9k/img.webp)
+
+
 **Back-end**
+
 ![node js](https://media.istockphoto.com/vectors/nodejs-vector-logo-backend-programming-in-javascript-server-vector-id1195857274?k=20&m=1195857274&s=170667a&w=0&h=k8oHsv3ehrvhviozLlvhEjGHweiHU7hbBv7bHEkgUqc=)
+
+
+
 **Server**
+
 ![nginx](https://t1.daumcdn.net/cfile/tistory/993F764E5B14EA5C02)
+
+
 **Infra**
+
+
 ![docker](https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/docker-logo.png)
+
 
 # 개발자 소개
 
