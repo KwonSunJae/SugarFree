@@ -46,6 +46,9 @@
  
 
  - 권순재 (SunJae Kwon) , Email: ksun4131@gmail.com
+ - 강현수 (HyunSu Kang) , Email: khsofficial1213@gmail.com
+
+
 
 # 개발 후기
 
