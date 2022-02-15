@@ -1,6 +1,16 @@
 {
   "dependencies": {
-    "yarn": "^1.22.17"
+    "yarn": "^1.22.17",
+    "body-parser": "^1.18.3",
+    "express" :"^4.16.4"
+  },
+  "devDependencies": {
+    "concurrently":"^4.0.1"
+  },
+  "scripts": {
+    "Front" : "cd Front && yarn install &&yarn start",
+    "Server": "cd Server && cd app && npm fund && node server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn Server\" \"yarn Front\""
   },
   "name": "SugarFree",
   "version": "1.0.0",
