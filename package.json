@@ -1,5 +1,13 @@
 {
   "dependencies": {
     "yarn": "^1.22.17"
-  }
+  },
+  "name": "SugarFree",
+  "version": "1.0.0",
+  "description": "give me candy plz.",
+  "main": "index.js",
+  "repository": "https://github.com/Team-Ssery/SugarFree.git",
+  "author": "KwonSunJae <32411719+KwonSunJae@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true
 }
