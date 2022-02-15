@@ -59,8 +59,8 @@ const InputInfo = ({userInfo, onChangeUserInfo, onClickSave}) =>{
     }
 
     return(
-        <form>
-            <b>ID</b>
+        <>
+            <b className='font'>아이디</b>
             <br/>
             <input
                 type="text"
@@ -75,7 +75,7 @@ const InputInfo = ({userInfo, onChangeUserInfo, onClickSave}) =>{
             check
             </button>
             <br/>
-            <b>PASSWORD</b>
+            <b className='font'>비밀번호</b>
             <br/>
             <input
                 id='pwdInput'
@@ -87,7 +87,7 @@ const InputInfo = ({userInfo, onChangeUserInfo, onClickSave}) =>{
             />
             <input type="checkbox" onClick={pwVisibility}/>Show Password
             <br/>
-            <b>NickName</b>
+            <b className='font'>닉네임</b>
             <br/>
             <input
                 type="text"
@@ -97,7 +97,7 @@ const InputInfo = ({userInfo, onChangeUserInfo, onClickSave}) =>{
                 value={userInfo.nickname}
             />
             <br/>
-            <b>Question</b>
+            <b className='font'>비밀번호 찾기 질문</b>
             <br/>
             <select id='questionSelect'>
                 <option value={questions["1"]}>1</option>
@@ -106,7 +106,7 @@ const InputInfo = ({userInfo, onChangeUserInfo, onClickSave}) =>{
                 <option value={questions["4"]}>4</option>
             </select>
             <br/>
-            <b>Answer</b>
+            <b className='font'>비밀번호 찾기 답변</b>
             <br/>
             <input 
                 id='answer'
@@ -117,7 +117,7 @@ const InputInfo = ({userInfo, onChangeUserInfo, onClickSave}) =>{
             />
             <br/>
             <button onClick={handleClick}>Submit</button>
-        </form>
+        </>
     );
 }
 
@@ -141,15 +141,12 @@ const RegisterPage = () =>{
     }
 
     return(
-        <div id='register-div'>
-            <fieldset>
-                <legend>Input Yout Information to Sign Up</legend>
-                <InputInfo 
+        <div id='register-div' className='bgc'>
+            <InputInfo 
                 userInfo = {userInfo} 
                 onChangeUserInfo={setUserInfo} 
                 onClickSave = {onClickSave}
-                />
-            </fieldset>
+            />
         </div>
     );
 }
