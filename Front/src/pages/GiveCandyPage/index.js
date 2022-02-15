@@ -1,0 +1,1 @@
+export { default as GiveCandyPage } from "./GiveCandyPage.jsx";
