@@ -47,6 +47,7 @@
 
  - 권순재 (SunJae Kwon) , Email: ksun4131@gmail.com (INFRA)
  - 강현수 (HyunSu Kang) , Email: khsofficial1213@gmail.com (Back)
+ - 이해인 (HaeIhn Lee) , Email: ini1231@gmail.com (Front)
 
 
 
