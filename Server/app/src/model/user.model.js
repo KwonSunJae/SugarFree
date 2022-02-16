@@ -3,7 +3,7 @@ const db = require("../config/db");
 class UserModel {
   static getUserInfo(user_id) {
     return new Promise((resolve, reject) => {
-      const query = "SELECT * FROM users WHERE id=?;";
+      const query = "SELECT * FROM users WHERE user_id=?;";
       db.query(query, [user_id], (err, data) => {
         if (err) reject(err);
         resolve(data[0]);
@@ -13,6 +13,7 @@ class UserModel {
 
   static save(userInfo) {
     return new Promise((resolve, reject) => {
+      console.log(userInfo);
       const query =
         "INSERT INTO users(user_id, password, question_num, question_answer) VALUES(?,?,?,?);";
       db.query(

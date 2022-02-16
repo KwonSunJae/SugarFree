@@ -11,7 +11,6 @@ class User {
       const { user_id, password } = await UserModel.getUserInfo(
         this.body.user_id
       );
-      console.log(password);
       if (user_id) {
         if (user_id === this.body.user_id && password === this.body.password) {
           return { result: true };
