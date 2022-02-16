@@ -1,23 +1,32 @@
 const User = require("../model/user");
 
 const output = {
-  validate: (req, res) => {
-    res.render("home/register/vaildate");
+  validate: async (req, res) => {
+    const user = new User(req.body);
+    const response = await user.validate();
+    return res.json(response);
   },
-  logout: (req, res) => {
-    res.render("home/logout");
+  logout: async (req, res) => {
+    const user = new User(req.body);
+    const response = await user.validate();
+    console.log(response.result);
+    if (response.result === false) {
+      return res.json({ result: true });
+    } else {
+      return res.json({ result: false });
+    }
   },
 };
 
 const process = {
-  login: (req, res) => {
+  login: async (req, res) => {
     const user = new User(req.body);
-    const response = user.login();
+    const response = await user.login();
     return res.json(response);
   },
-  register: (req, res) => {
+  register: async (req, res) => {
     const user = new User(req.body);
-    const response = user.register();
+    const response = await user.register();
     return res.json(response);
   },
 };

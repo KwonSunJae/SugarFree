@@ -5,8 +5,23 @@ class UserModel {
     return new Promise((resolve, reject) => {
       const query = "SELECT * FROM users WHERE user_id=?;";
       db.query(query, [user_id], (err, data) => {
-        if (err) reject(err);
-        resolve(data[0]);
+        if (resolve) resolve(data[0]);
+        else reject(err);
+      });
+    });
+  }
+
+  static getUserId(idColumn) {
+    return new Promise((resolve, reject) => {
+      const query = "SELECT user_id FROM users WHERE user_id=?;";
+      db.query(query, [idColumn.user_id], (err, data) => {
+        if (resolve) {
+          if (data[0] === undefined) {
+            resolve({ result: true });
+          } else {
+            resolve({ result: false });
+          }
+        } else reject(err);
       });
     });
   }
