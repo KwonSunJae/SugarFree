@@ -49,7 +49,7 @@
  - 강현수 (HyunSu Kang) , Email: khsofficial1213@gmail.com (Back)
  - 이해인 (HaeIhn Lee) , Email: ini1231@gmail.com (Front)
  - 황수빈 (Subin Hwang) , Email: bug204@naver.com (Front)
-
+ - 이광해 (KwangHae Lee) , Email: yds05074@gmail.com (Front)
 
 # 개발 후기
 
