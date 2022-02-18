@@ -3,10 +3,10 @@ const router = express.Router();
 
 const ctrl = require("../controller/home.controller");
 
-router.get("/home/validate", ctrl.output.validate);
-router.get("/home/logout", ctrl.output.logout);
+router.get("/api/validate", ctrl.output.validate);
+router.get("/api/logout", ctrl.output.logout);
 
-router.post("/home/register", ctrl.process.register);
-router.post("/home/login", ctrl.process.login);
+router.post("/api/register", ctrl.process.register);
+router.post("/api/login", ctrl.process.login);
 
 module.exports = router;
