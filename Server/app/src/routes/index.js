@@ -3,7 +3,8 @@ const router = express.Router();
 
 const ctrl = require("../controller/home.controller");
 
-//router.get("/home/register/vaildate", ctrl.output.vaildate);
+router.get("/home/validate", ctrl.output.validate);
+router.get("/home/logout", ctrl.output.logout);
 
 router.post("/home/register", ctrl.process.register);
 router.post("/home/login", ctrl.process.login);

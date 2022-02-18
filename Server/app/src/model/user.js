@@ -6,12 +6,10 @@ class User {
   }
 
   async login() {
-    //console.log(this.body.user_id);
     try {
       const { user_id, password } = await UserModel.getUserInfo(
         this.body.user_id
       );
-      console.log(password);
       if (user_id) {
         if (user_id === this.body.user_id && password === this.body.password) {
           return { result: true };
@@ -22,13 +20,26 @@ class User {
         return { result: false };
       }
     } catch (err) {
-      return { result: false, message: err };
+      console.error(err);
     }
   }
 
-  register() {
-    const response = UserModel.save(this.body);
-    return response;
+  async register() {
+    try {
+      const response = await UserModel.save(this.body);
+      return response;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async validate() {
+    try {
+      const response = await UserModel.getUserId(this.body);
+      return response;
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
 
