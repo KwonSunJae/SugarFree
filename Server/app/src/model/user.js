@@ -1,4 +1,5 @@
 const UserModel = require("./user.model");
+const bcrypt = require("bcrypt");
 
 class User {
   constructor(body) {
@@ -11,8 +12,13 @@ class User {
         this.body.user_id
       );
       if (user_id) {
-        if (user_id === this.body.user_id && password === this.body.password) {
-          return { result: true };
+        if (user_id === this.body.user_id) {
+          const isEqualPW = bcrypt.compareSync(this.body.password, password);
+          if (isEqualPW) {
+            return { result: true };
+          } else {
+            return { result: false };
+          }
         } else {
           return { result: false };
         }
