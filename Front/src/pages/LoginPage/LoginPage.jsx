@@ -9,11 +9,8 @@ const LoginPage = () => {
     });
 
     return (
-        <div id='login-div'>
-            <fieldset>
-                <legend>Input your Id and Password</legend>
-                <InputField data={loginInfo} onChange={setLoginInfo}/>
-            </fieldset>
+        <div id='login-div' className='bgc'>
+            <InputField data={loginInfo} onChange={setLoginInfo}/>
         </div>
     );
 }
@@ -72,7 +69,7 @@ const InputField = ({data, onChange}) => {
     };
 
     return (
-        <form>
+        <>
             <b>ID</b>
             <br/>
             <input
@@ -82,7 +79,7 @@ const InputField = ({data, onChange}) => {
                 onChange={handleChange}
                 value={data.id}/>
             <br/>
-            <b>PASSWORD</b>
+            <b className='font'>PASSWORD</b>
             <br/>
             <input
                 type="password"
@@ -93,7 +90,7 @@ const InputField = ({data, onChange}) => {
             <br/>
             <button onClick={page2Register}>Sign Up</button>
             <button onClick={handleClick}>Sign In</button>
-        </form>
+        </>
     );
 }
 
