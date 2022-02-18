@@ -23,8 +23,13 @@
 
 
 --db 접속을 위한 bash 방법 ---
+  
 ~# docker exec -it mysql-container bash
+  
+
 ~# mysql -u root -p
+  
+
 비번 입력 mysql 접속 완료
 
 
