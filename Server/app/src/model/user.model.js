@@ -1,6 +1,9 @@
 const db = require("../config/db");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 class UserModel {
+  // 로그인 시 회원정보 DB에서 가져오기
   static getUserInfo(user_id) {
     return new Promise((resolve, reject) => {
       const query = "SELECT * FROM users WHERE user_id=?;";
@@ -11,6 +14,7 @@ class UserModel {
     });
   }
 
+  // 회원가입 전 id중복체크
   static getUserId(idColumn) {
     return new Promise((resolve, reject) => {
       const query = "SELECT user_id FROM users WHERE user_id=?;";
@@ -26,16 +30,17 @@ class UserModel {
     });
   }
 
+  // 회원가입 정보 DB에 저장
   static save(userInfo) {
     return new Promise((resolve, reject) => {
-      console.log(userInfo);
+      const newPW = bcrypt.hashSync(userInfo.password, saltRounds);
       const query =
         "INSERT INTO users(user_id, password, question_num, question_answer) VALUES(?,?,?,?);";
       db.query(
         query,
         [
           userInfo.user_id,
-          userInfo.password,
+          newPW,
           userInfo.question_num,
           userInfo.question_answer,
         ],
