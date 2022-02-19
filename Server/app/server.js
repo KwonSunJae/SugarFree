@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", home);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5051;
 app.listen(PORT, () => {
   console.log("success");
 });
