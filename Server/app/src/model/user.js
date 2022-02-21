@@ -1,5 +1,6 @@
 const UserModel = require("./user.model");
 const bcrypt = require("bcrypt");
+const jwt = require("../module/jwt");
 
 class User {
   constructor(body) {
@@ -11,11 +12,12 @@ class User {
       const { user_id, password } = await UserModel.getUserInfo(
         this.body.user_id
       );
+      const jwtToken = await jwt.sign(user_id);
       if (user_id) {
         if (user_id === this.body.user_id) {
           const isEqualPW = bcrypt.compareSync(this.body.password, password);
           if (isEqualPW) {
-            return { result: true };
+            return { result: true, token: jwtToken };
           } else {
             return { result: false };
           }
