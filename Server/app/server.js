@@ -4,13 +4,13 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const home = require("./src/routes/index");
+const api = require("./src/routes/index");
 
 app.use(express.static(`${__dirname}/src/public`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/", home);
+app.use("/", api);
 
 const PORT = process.env.PORT || 5051;
 app.listen(PORT, () => {
