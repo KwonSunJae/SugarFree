@@ -47,7 +47,7 @@ const InputField = ({data, onChange}) => {
             axios.post("/api/login", {
                     id : data.id,
                     pw : data.pw
-            },headers)
+            })
             .then((res) =>{
                 const result = res.data.success;
                 console.log("response : " + result);
