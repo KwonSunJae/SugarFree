@@ -18,9 +18,10 @@ class UserModel {
   static getUserId(idColumn) {
     return new Promise((resolve, reject) => {
       const query = "SELECT user_id FROM users WHERE user_id=?;";
-      db.query(query, [idColumn.user_id], (err, results) => {
+      db.query(query, [idColumn.id], (err, results) => {
         if (resolve) {
           console.log(results)
+
           if (results[0] === undefined) {
             resolve({ result: true });
           } else {
