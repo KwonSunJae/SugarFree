@@ -7,7 +7,7 @@ class UserModel {
   static getUserInfo(user_id) {
     return new Promise((resolve, reject) => {
       const query = "SELECT * FROM users WHERE user_id=?;";
-      db.query(query, [user_id], (err, results, fields) => {
+      db.query(query, [user_id], (err, results) => {
         if (resolve) resolve(results[0]);
         else reject(err);
       });
@@ -18,7 +18,7 @@ class UserModel {
   static getUserId(idColumn) {
     return new Promise((resolve, reject) => {
       const query = "SELECT user_id FROM users WHERE user_id=?;";
-      db.query(query, [idColumn.user_id], (err, results, fields) => {
+      db.query(query, [idColumn.user_id], (err, results) => {
         if (resolve) {
           if (results[0] === undefined) {
             resolve({ result: true });
