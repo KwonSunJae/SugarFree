@@ -41,5 +41,6 @@
   "main": "index.js",
   "repository": "https://github.com/Team-Ssery/SugarFree.git",
   "author": "PL",
-  "license": "MIT"
+  "license": "MIT",
+  "proxy" : "http://localhost:5051"
 }

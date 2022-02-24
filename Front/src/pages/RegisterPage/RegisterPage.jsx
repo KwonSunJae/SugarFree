@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 //나중에 여기에 질문 추가
 const questions = {
-    "1" : "1",
-    "2" : "2",
-    "3" : "3",
-    "4" : "4"
+    "1" : "당신의 고향은 어디인가요?",
+    "2" : "좋아하는 사람의 이름은?",
+    "3" : "아버지의 성함은?",
+    "4" : "좋아하는 캐릭터의 이름은?"
 };
 
 
@@ -100,10 +100,10 @@ const InputInfo = ({userInfo, onChangeUserInfo, onClickSave}) =>{
             <b className='font'>비밀번호 찾기 질문</b>
             <br/>
             <select id='questionSelect'>
-                <option value={questions["1"]}>1</option>
-                <option value={questions["2"]}>2</option>
-                <option value={questions["3"]}>3</option>
-                <option value={questions["4"]}>4</option>
+                <option value={1}>{questions["1"]}</option>
+                <option value={2}>{questions["2"]}</option>
+                <option value={3}>{questions["3"]}</option>
+                <option value={4}>{questions["4"]}</option>
             </select>
             <br/>
             <b className='font'>비밀번호 찾기 답변</b>
@@ -135,7 +135,7 @@ const RegisterPage = () =>{
 
     const onClickSave = () =>{
         //axios로 db에 전송
-
+        console.log({userInfo})
 
         navigate("/login/");
     }
