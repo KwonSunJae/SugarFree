@@ -10,6 +10,7 @@ class User {
   async login() {
     try {
       const { user_id, password } = await UserModel.getUserInfo(this.body.id);
+      console.log(this.body.id);
       const jwtToken = await jwt.sign(user_id);
       if (user_id) {
         if (user_id === this.body.id) {
@@ -32,7 +33,6 @@ class User {
 
   async register() {
     try {
-      console.log(this.body);
       const response = await UserModel.save(this.body);
       return response;
     } catch (err) {
@@ -42,7 +42,6 @@ class User {
 
   async validate() {
     try {
-      console.log(this.body);
       const response = await UserModel.getUserId(this.body);
       return response;
     } catch (err) {

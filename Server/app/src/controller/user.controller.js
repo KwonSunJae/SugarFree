@@ -7,7 +7,7 @@ const output = {
     return res.json(response);
   },
   logout: async (req, res) => {
-    const user = new User(req.body);
+    const user = new User(req.query);
     const response = await user.validate();
     console.log(response.result);
     if (response.result === false) {

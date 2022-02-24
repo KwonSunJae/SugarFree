@@ -26,8 +26,8 @@ const InputInfo = ({userInfo, onChangeUserInfo, onClickSave}) =>{
     //중복 검사 버튼 클릭 시, 중복인지 아닌지 확인
     const handleCheckDuplicate = (e) =>{
         //db에서 같은 아이디가 있는지 검사하고 없다면 onChangeUserInfo로 id_duplicate true로 변경
-        axios.get("/api/validate/",{id : userInfo.id}
-        ).then((res) =>{
+        axios.get("/api/validate",{params : {id : userInfo.id}
+        }).then((res) =>{
             const result = res.data.result;
             console.log("response : " + result + "end");
             if(result === true){
@@ -164,7 +164,7 @@ const RegisterPage = () =>{
             axios.post("/api/register",{
                 id: userInfo.id,
                 pw: userInfo.pw,
-                // nickname: userInfo.nickname,
+                nickname: userInfo.nickname,
                 question:userInfo.questionNum,
                 answer: userInfo.answer,
 

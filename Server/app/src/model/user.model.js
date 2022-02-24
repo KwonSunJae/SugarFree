@@ -34,7 +34,7 @@ class UserModel {
   // 회원가입 정보 DB에 저장
   static save(userInfo) {
     return new Promise((resolve, reject) => {
-      const newPW = bcrypt.hashSync(userInfo.password, saltRounds);
+      const newPW = bcrypt.hashSync(userInfo.pw, saltRounds);
       const query =
         "INSERT INTO users(user_id, password, nickname, question_num, question_answer) VALUES(?,?,?,?,?);";
       db.query(
