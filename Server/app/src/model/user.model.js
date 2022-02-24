@@ -20,6 +20,7 @@ class UserModel {
       const query = "SELECT user_id FROM users WHERE user_id=?;";
       db.query(query, [idColumn.user_id], (err, results) => {
         if (resolve) {
+          console.log(results)
           if (results[0] === undefined) {
             resolve({ result: true });
           } else {
@@ -33,13 +34,13 @@ class UserModel {
   // 회원가입 정보 DB에 저장
   static save(userInfo) {
     return new Promise((resolve, reject) => {
-      const newPW = bcrypt.hashSync(userInfo.password, saltRounds);
+      const newPW = bcrypt.hashSync(userInfo.pw, saltRounds);
       const query =
         "INSERT INTO users(user_id, password, nickname, question_num, question_answer) VALUES(?,?,?,?,?);";
       db.query(
         query,
         [
-          userInfo.user_id,
+          userInfo.id,
           newPW,
           userInfo.nickname,
           userInfo.question,
