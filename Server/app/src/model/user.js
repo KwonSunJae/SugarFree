@@ -45,6 +45,7 @@ class User {
   async validate() {
     try {
       const response = await UserModel.getUserId(this.body);
+      console.log(this.body)
       return response;
     } catch (err) {
       console.error(err);
