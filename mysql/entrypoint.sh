@@ -9,6 +9,8 @@ USE mysql;
 FLUSH PRIVILEGES;
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 UPDATE user SET password=PASSWORD("$MYSQL_ROOT_PASSWORD") WHERE user='root';
+CREATE DATABASE ssery CHARACTER SET UTF8;
+
 EOF
 
 mysqld --bootstrap --verbose=0 < /tmp/sql

@@ -1,0 +1,8 @@
+module.exports = {
+  secretKey: "YoUrSeCrEtKeY",
+  option: {
+    algorithm: "HS256",
+    expiresIn: "3 days",
+    issuer: "issuer",
+  },
+};

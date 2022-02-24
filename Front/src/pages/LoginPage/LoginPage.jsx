@@ -2,6 +2,10 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+axios.defaults.withCredentials = true;
+const headers={
+    'Access-Control-Allow-Origin': "http://localhost:3000/"
+}
 const LoginPage = () => {
     const [loginInfo, setLoginInfo] = useState({
         id : "",
@@ -40,7 +44,7 @@ const InputField = ({data, onChange}) => {
         else{
             console.log("Sending data to server...")
             //Login API 정해지면 URL 변경하겠음
-            axios.post("http://127.0.0.1:5000/login/valid/", {
+            axios.post("/api/login", {
                     id : data.id,
                     pw : data.pw
             })
