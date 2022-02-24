@@ -7,8 +7,8 @@ class UserModel {
   static getUserInfo(user_id) {
     return new Promise((resolve, reject) => {
       const query = "SELECT * FROM users WHERE user_id=?;";
-      db.query(query, [user_id], (err, data) => {
-        if (resolve) resolve(data[0]);
+      db.query(query, [user_id], (err, results, fields) => {
+        if (resolve) resolve(results[0]);
         else reject(err);
       });
     });
@@ -18,10 +18,9 @@ class UserModel {
   static getUserId(idColumn) {
     return new Promise((resolve, reject) => {
       const query = "SELECT user_id FROM users WHERE user_id=?;";
-      db.query(query, [idColumn.user_id], (err, data) => {
+      db.query(query, [idColumn.user_id], (err, results, fields) => {
         if (resolve) {
-          console.log(data)
-          if (data === undefined) {
+          if (results === undefined) {
             resolve({ result: true });
           } else {
             resolve({ result: false });
@@ -36,14 +35,15 @@ class UserModel {
     return new Promise((resolve, reject) => {
       const newPW = bcrypt.hashSync(userInfo.password, saltRounds);
       const query =
-        "INSERT INTO users(user_id, password, question_num, question_answer) VALUES(?,?,?,?);";
+        "INSERT INTO users(user_id, password, nickname, question_num, question_answer) VALUES(?,?,?,?,?);";
       db.query(
         query,
         [
           userInfo.user_id,
           newPW,
-          userInfo.question_num,
-          userInfo.question_answer,
+          userInfo.nickname,
+          userInfo.question,
+          userInfo.answer,
         ],
         (err) => {
           if (err) reject(err);

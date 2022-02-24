@@ -34,6 +34,7 @@ class User {
 
   async register() {
     try {
+      console.log(this.body);
       const response = await UserModel.save(this.body);
       return response;
     } catch (err) {
