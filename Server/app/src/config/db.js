@@ -10,7 +10,7 @@ const db = mysql.createConnection({
 db.connect((err) => {
   if (err) return console.error("error" + err.message);
 
-  let createTable = `CREATE TABLE IF NOT EXISTS users(
+  let createTableUsers = `CREATE TABLE IF NOT EXISTS users(
     user_id VARCHAR(20) NOT NULL,
     password VARCHAR(100) NOT NULL,
     question_num INT NOT NULL,
@@ -18,7 +18,30 @@ db.connect((err) => {
     PRIMARY KEY(user_id)
   )`;
 
-  db.query(createTable, (err, result, field) => {
+  let createTableCandy = `CREATE TABLE IF NOT EXISTS candy(
+    candy_num INT NOT NULL,
+    message VARCHAR(200) NOT NULL,
+    emogi_num INT NOT NULL,
+    img MEDIUMBLOB NOT NULL,
+    sender_name VARCHAR(20) NOT NULL,
+    user_id VARCHAR(20) NOT NULL,
+    send_time TIMESTAMP NOT NULL DEFAULT NOW(),
+    PRIMARY KEY(candy_num)
+  )`;
+
+  let createTableReport = `CREATE TABLE IF NOT EXISTS report(
+    candy_num INT NOT NULL,
+    content VARCHAR(100) NOT NULL,
+    PRIMARY KEY(candy_num)
+  )`;
+
+  db.query(createTableUsers, (err, result, field) => {
+    if (err) throw err;
+  });
+  db.query(createTableCandy, (err, result, field) => {
+    if (err) throw err;
+  });
+  db.query(createTableReport, (err, result, field) => {
     if (err) throw err;
   });
 
