@@ -2,7 +2,7 @@ const User = require("../model/user");
 
 const output = {
   validate: async (req, res) => {
-    const user = new User(req.body);
+    const user = new User(req.query);
     const response = await user.validate();
     return res.json(response);
   },

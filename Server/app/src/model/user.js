@@ -9,12 +9,10 @@ class User {
 
   async login() {
     try {
-      const { user_id, password } = await UserModel.getUserInfo(
-        this.body.user_id
-      );
+      const { user_id, password } = await UserModel.getUserInfo(this.body.id);
       const jwtToken = await jwt.sign(user_id);
       if (user_id) {
-        if (user_id === this.body.user_id) {
+        if (user_id === this.body.id) {
           const isEqualPW = bcrypt.compareSync(this.body.password, password);
           if (isEqualPW) {
             return { result: true, token: jwtToken };
@@ -44,6 +42,7 @@ class User {
 
   async validate() {
     try {
+      console.log(this.body);
       const response = await UserModel.getUserId(this.body);
       return response;
     } catch (err) {
