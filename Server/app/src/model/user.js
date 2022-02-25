@@ -10,12 +10,17 @@ class User {
   async login() {
     try {
       const { user_id, password } = await UserModel.getUserInfo(this.body.id);
+      console.log(password);
+      console.log(user_id);
       console.log(this.body.id);
+      console.log(this.body.pw);
       const jwtToken = await jwt.sign(user_id);
       if (user_id) {
-        if (user_id === this.body.id) {
-          const isEqualPW = bcrypt.compareSync(this.body.password, password);
+        if (user_id === this.body.id[0]) {
+          console.log("id equal");
+          const isEqualPW = bcrypt.compareSync(this.body.pw[0], password);
           if (isEqualPW) {
+            console.log("pw equal");
             return { result: true, token: jwtToken };
           } else {
             return { result: false };
