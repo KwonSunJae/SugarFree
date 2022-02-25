@@ -3,9 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
-const headers={
-    'Access-Control-Allow-Origin': "http://localhost:3000/"
-}
+
 const LoginPage = () => {
     const [loginInfo, setLoginInfo] = useState({
         id : "",
@@ -49,10 +47,16 @@ const InputField = ({data, onChange}) => {
                     pw : data.pw
             })
             .then((res) =>{
-                const result = res.data.success;
+                const result = res.data.result;
+                
                 console.log("response : " + result);
-                if(result === "valid"){
+                if(result === "true"){
                     //로그인 성공하면 페이지 변경, 나중에 추가되면 변경 예정
+                    const access_token = res.data.token;
+
+                    // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+		            axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
+
                     //history.push("/mainPage");
                 }else{
                     if(result ==="id invalid"){
