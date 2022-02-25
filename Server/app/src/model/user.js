@@ -40,7 +40,6 @@ class User {
 
   async register() {
     try {
-      console.log(this.body);
       const response = await UserModel.save(this.body);
       return response;
     } catch (err) {
@@ -51,7 +50,6 @@ class User {
   async validate() {
     try {
       const response = await UserModel.getUserId(this.body);
-      console.log(this.body)
       return response;
     } catch (err) {
       console.error(err);

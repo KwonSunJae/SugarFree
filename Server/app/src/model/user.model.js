@@ -20,8 +20,7 @@ class UserModel {
       const query = "SELECT user_id FROM users WHERE user_id=?;";
       db.query(query, [idColumn.id], (err, results) => {
         if (resolve) {
-          console.log(results)
-
+          console.log(results[0]);
           if (results[0] === undefined) {
             resolve({ result: true });
           } else {
