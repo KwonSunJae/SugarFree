@@ -3,10 +3,17 @@ const Candy = require("../model/candy");
 const output = {};
 
 const process = {
-  myCandy: (req, res) => {
+  myCandy: async (req, res) => {
     const candy = new Candy(req.body);
+    const response = await candy.getMyCandy();
+    return res.json(response);
   },
-  giveCandy: (req, res) => {},
+  giveCandy: async (req, res) => {
+    const candy = new Candy(req.body);
+    const response = await candy.giveYouCandy();
+    console.log(response);
+    return res.json(response);
+  },
   showCandy: (req, res) => {},
 };
 

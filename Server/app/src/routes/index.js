@@ -11,5 +11,6 @@ router.get("/api/logout", userCtrl.output.logout);
 router.post("/api/register", userCtrl.process.register);
 router.post("/api/login", userCtrl.process.login);
 router.post("/api/mycandy", candyCtrl.process.myCandy);
+router.post("/api/givecandy", candyCtrl.process.giveCandy);
 
 module.exports = router;
