@@ -21,6 +21,15 @@ class Candy {
       console.error(err);
     }
   }
+
+  async showMyCandy() {
+    try {
+      const showCandyInfo = await CandyModel.showMyCandyInfo(this.body);
+      return showCandyInfo;
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
 
 module.exports = Candy;

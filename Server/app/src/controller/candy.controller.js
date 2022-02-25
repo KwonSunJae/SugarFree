@@ -14,7 +14,11 @@ const process = {
     console.log(response);
     return res.json(response);
   },
-  showCandy: (req, res) => {},
+  showCandy: async (req, res) => {
+    const candy = new Candy(req.body);
+    const response = await candy.showMyCandy();
+    return res.json(response);
+  },
 };
 
 module.exports = {
