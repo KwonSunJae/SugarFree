@@ -10,7 +10,7 @@
   },
   "scripts": {
     "Front": "cd Front && yarn install &&yarn start",
-    "Server": "cd Server && cd app && npm fund && node server.js",
+    "Server": "cd Server && cd app && npm install && node server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn Server\" \"yarn Front\""
   },
   "name": "SugarFree",

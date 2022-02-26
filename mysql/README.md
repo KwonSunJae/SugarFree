@@ -12,7 +12,7 @@
 -실행-
 
 3. docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=<password> -d -p 3306:3306 mysql:latest ////<password> 는 공동 설정한 비번으로 해주세요
-
+docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=1234 -d -p 3306:3306 mysql:latest
 -종료-
 
 4. docker stop mysql-continer
