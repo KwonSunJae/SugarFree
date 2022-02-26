@@ -20,10 +20,10 @@ db.connect((err) => {
   )`;
 
   let createTableCandy = `CREATE TABLE IF NOT EXISTS candy(
-    candy_num INT NOT NULL,
-    message VARCHAR(200) NOT NULL,
-    emogi_num INT NOT NULL,
-    img MEDIUMBLOB NOT NULL,
+    candy_num INT NOT NULL AUTO_INCREMENT,
+    message VARCHAR(200),
+    emoji_num INT NOT NULL,
+    img MEDIUMBLOB,
     sender_name VARCHAR(20) NOT NULL,
     user_id VARCHAR(20) NOT NULL,
     send_time TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -32,7 +32,7 @@ db.connect((err) => {
 
   let createTableReport = `CREATE TABLE IF NOT EXISTS report(
     candy_num INT NOT NULL,
-    content VARCHAR(100) NOT NULL,
+    content VARCHAR(100),
     PRIMARY KEY(candy_num)
   )`;
 
