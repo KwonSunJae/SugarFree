@@ -25,3 +25,35 @@
   z-index: 2;
 
 }
+.giveBtn {
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  cursor: pointer;
+  
+  z-index: 2;
+
+}
+.grayBox{
+  background-color: #d3d3d3;
+  border-radius: 20px 20px 20px 20px;
+  height: 500px;
+  width: 500px;
+}
+.grayBox2{
+  background-color: #d3d3d3;
+  border-radius: 20px 20px 20px 20px;
+  height: 200px;
+  width: 500px;
+}
+
+.imgbutton {
+  background-color: transparent;
+  margin-left: 50px;
+  border: none;
+}
