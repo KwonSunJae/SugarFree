@@ -3,6 +3,29 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 class UserModel {
+  // 총 가입자 수를 return
+  static getTotalMember() {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT COUNT(user_id) FROM users;`;
+      db.query(query, (err, results) => {
+        if (err) reject(err);
+        const result = Object.keys(results);
+        resolve(result[0]);
+      });
+    });
+  }
+
+  // 총 캔디 수를 return
+  static getTotalCandy() {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT COUNT(candy_num) FROM candy;`;
+      db.query(query, (err, results) => {
+        if (err) reject(err);
+        const result = Object.keys(results);
+        resolve(result[0]);
+      });
+    });
+  }
   // 로그인 시 회원정보 DB에서 가져오기
   static getUserInfo(user_id) {
     return new Promise((resolve, reject) => {
@@ -10,6 +33,17 @@ class UserModel {
       db.query(query, [user_id], (err, results) => {
         if (resolve) resolve(results[0]);
         else reject(err);
+      });
+    });
+  }
+
+  // user nickname 반환
+  static getNickname(user_id) {
+    return new Promise((resolve, reject) => {
+      const query = "SELECT nickname FROM users WHERE user_id=?;";
+      db.query(query, [user_id], (err, results) => {
+        if (err) reject(err);
+        return resolve(results[0]);
       });
     });
   }
