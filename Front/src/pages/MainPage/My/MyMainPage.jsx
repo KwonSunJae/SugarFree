@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {useParams} from 'react-router-dom';
 import './MyMainPage.css';
 import CustomPopup from "./CustomPopup";
 
 
 const MyMainPage = () => {
+  let params = useParams();
+  const user_id = params.user_id;
 
   const popupCloseHandler = (e) => {
     setVisibility(e);
@@ -13,8 +16,12 @@ const MyMainPage = () => {
   const [visibility, setVisibility] = useState(false);
   const [userUrl, setUserUrl] = useState("");
 
+  useEffect(()=>{
+    //여기서 axios로 nickname이랑 받은 사탕 리스트 받을 예정
+    setUserName();
+  }, [user_id])
+  
   return (
-
     <div className="bgc" >
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
