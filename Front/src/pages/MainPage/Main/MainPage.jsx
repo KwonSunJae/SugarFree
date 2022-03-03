@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import './MainPage.css';
-
+import Bounce from "../Animation/Bounce"
 
 
 const MainPage = () => {
@@ -22,7 +22,7 @@ const MainPage = () => {
   const click = () => setClicked(current => !current);
   const [cclicked, setCclicked] = useState(true);
   const cclick = () => setCclicked(current => !current);
-
+  const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min); //난수 생성
   return (
 
     <div className="bgc" >
@@ -32,8 +32,38 @@ const MainPage = () => {
       <br></br>
       <p className="font">가입자 수 : {userNum}</p>
       <p className="font">전달된 선물 수 : {candyNum}</p>
+      <div className="sugar_box"style={{position: "relative" }}>
+        
+        <div style={{position:"absolute",left: 200,top:220,opacity:0.6}}>
+          <Bounce emoji_num={getRandom(1,32)}/>
+        </div>
+        <div style={{position:"absolute",left: 150,top:210,opacity:0.6}}>
+          <Bounce emoji_num={getRandom(1,32)}/>
+        </div>
+        <div style={{position:"absolute",left: 250,top:210,opacity:0.6}}>
+          <Bounce emoji_num={getRandom(1,32)}/>
+        </div>
+        <div style={{position:"absolute",left: 110,top:170,opacity:0.6}}>
+          <Bounce emoji_num={getRandom(1,32)}/>
+        </div>
+        <div style={{position:"absolute",left: 160,top:160,opacity:0.6}}>
+          <Bounce emoji_num={getRandom(1,32)}/>
+        </div>
+        <div style={{position:"absolute",left: 200,top:170,opacity:0.6}}>
+          <Bounce emoji_num={getRandom(1,32)}/>
+        </div>
+        <div style={{position:"absolute",left: 240,top:160,opacity:0.6}}>
+          <Bounce emoji_num={getRandom(1,32)}/>
+        </div>
+        <div style={{position:"absolute",left: 290,top:170,opacity:0.6}}>
+          <Bounce emoji_num={getRandom(1,32)}/>
+        </div>
 
-      <img src={"/img/candyMachine_512.png"} height="450" width="450" alt="candyMachine" />
+        
+        <img src={"/img/candyMachine_512.png"} height="450" width="450" alt="candyMachine" />
+
+      </div>
+      
       <br></br>
 
       <button onClick={loginClick} onMouseEnter={click} onMouseLeave={click} className="imgbutton" type="button">
