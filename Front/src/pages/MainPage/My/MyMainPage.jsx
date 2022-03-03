@@ -1,20 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {useParams} from 'react-router-dom';
 import './MyMainPage.css';
 import CustomPopup from "./CustomPopup";
+import axios from 'axios';
 
 
 const MyMainPage = () => {
+  let params = useParams();
+  const user_id = params.user_id;
 
   const popupCloseHandler = (e) => {
     setVisibility(e);
   };
   const [userName, setUserName] = useState("");
-  const [myCandyNum, setMyCandyNum] = useState(0);
+  const [myCandyNum, setMyCandyNum] = useState();
   const [visibility, setVisibility] = useState(false);
   const [userUrl, setUserUrl] = useState("");
 
-  return (
+  useEffect(()=>{
+    //axios로 유저 아이디를 보내서 nickname을 받아옴
+    axios.get("/api/userinfo", {params: {id : user_id}})
+      .then((res) =>{
+        setUserName(res.data.nickname);
+      })
+      .catch((err) =>{
+        alert("해당하는 아이디를 찾을 수 없습니다.")
+      });
+  }, [user_id])
 
+  useEffect(() =>{
+    axios.post("/api/mycandy" , {params: {id : user_id}})
+      .then((res) =>{
+        setMyCandyNum(res.data.length);
+      })
+      .catch((err) =>{
+        alert("해당하는 아이디를 찾을 수 없습니다.")
+      });
+  },[user_id]);
+  
+  return (
     <div className="bgc" >
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');

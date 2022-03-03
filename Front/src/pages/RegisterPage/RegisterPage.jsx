@@ -114,7 +114,7 @@ const InputInfo = ({userInfo, onChangeUserInfo, onClickSave}) =>{
             <br/>
             <b className='font'>비밀번호 찾기 질문</b>
             <br/>
-            <select id='questionSelect' onChange={onChangeQuestion} defaultValue = {'1'} value={userInfo.questionNum}>
+            <select id='questionSelect' onChange={onChangeQuestion} value={userInfo.questionNum}>
                 <option value='1'>{questions["1"]}</option>
                 <option value='2'>{questions["2"]}</option>
                 <option value='3'>{questions["3"]}</option>
