@@ -12,7 +12,7 @@ const GiveCandyPage = () => {
     navigate("/givecandy/input-name");
   }
 
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState(""); // 선물 받는 유저 : 서버에서 받아와야 함
 
   const [userUrl, setUserUrl] = useState("");
 

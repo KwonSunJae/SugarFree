@@ -18,7 +18,7 @@ const InputName = () => {
   }
 
   const saveNickname = (e) =>{
-    setNickname(e.target.value);
+    setNickname(e.target.value);  // 닉네임 - 서버연결
   }
 
   return (
