@@ -15,14 +15,18 @@ const humorList = ["humor_100_250.png", "humor_apple_250.png", "humor_bulga_250.
 
 const SelectGift = () =>{
     const navigate = useNavigate();
-    const [choiceGift, setChoiceGift] = useState("");
+
+    const [userName, setUserName] = useState(""); // 받는사람 - 서버에서 값 받아와야함
+
+    const [choiceGift, setChoiceGift] = useState("");  // 선택된 이모티콘 -> 서버로 값 넘김
     const [giftoption, setGiftoption] = useState("0");
     const choiceGiftOption = (e) => {
         setGiftoption(e.target.value);
     }
     const clickitem = (e) => {
         //여기에 css 추가 : 배경색 변경
-        setChoiceGift(e.target);
+        setChoiceGift(e.target); // 선물보낼 이모티콘 : 서버연결 
+        //여기 밑에 부분은 서버에 어떤걸로 값 보낼지 몰라서 img 객체 / alt 값 둘다 log로 찍어놨어(값이 잘 나오는지 확인용)
         console.log(e.target);
         console.log(e.target.alt);
     }
@@ -44,8 +48,7 @@ const SelectGift = () =>{
           <br></br>
           <p className="font1">선물 보내기</p>
           <div>
-             {/* userid 추가해주세요 */}
-            <p>님에게 줄 선물을 골라주세요</p>
+            <p>{userName}님에게 줄 선물을 골라주세요</p>
             <br/>
             <form onChange={choiceGiftOption}>
                 <input type="radio" id="candy" name="gift" value="0" hidden/>
