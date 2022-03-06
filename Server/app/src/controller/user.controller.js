@@ -1,6 +1,18 @@
 const User = require("../model/user");
 
 const output = {
+  main: async (req, res) => {
+    const user = new User(req.query);
+    const response = await user.main();
+    return res.json(response);
+  },
+  userinfo: async (req, res) => {
+    // req.query를 하면 postman에서는 제대로 동작하지 않음.
+    //const user = new User(req.body);
+    const user = new User(req.query);
+    const response = await user.getNickname();
+    return res.json(response);
+  },
   validate: async (req, res) => {
     const user = new User(req.query);
     const response = await user.validate();
