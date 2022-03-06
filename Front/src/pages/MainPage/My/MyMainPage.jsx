@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom';
+import {useLocation, useParams} from 'react-router-dom';
 import './MyMainPage.css';
 import CustomPopup from "./CustomPopup";
 import axios from 'axios';
@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const MyMainPage = () => {
   let params = useParams();
+  let location = useLocation();
   const user_id = params.user_id;
 
   const popupCloseHandler = (e) => {
@@ -37,7 +38,17 @@ const MyMainPage = () => {
         alert("해당하는 아이디를 찾을 수 없습니다.")
       });
   },[user_id]);
+
+  useEffect(()=>{
+    //페이지 진입 시, url 세팅
+    setUserUrl(`http://localhost:3000${location.pathname}`);
+  }, [location])
   
+  const handlePopupClick = (e) =>{
+    setVisibility(!visibility)
+    navigator.clipboard.writeText(userUrl);
+  }
+
   return (
     <div className="bgc" >
       <style>
@@ -58,7 +69,7 @@ const MyMainPage = () => {
           title="링크 공유하기"
         >
           <p type="text">{userUrl}</p>
-          <button onClick={(e) => setVisibility(!visibility)}>복사하기</button>
+          <button onClick={handlePopupClick}>복사하기</button>
 
         </CustomPopup>
 

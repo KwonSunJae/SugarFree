@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 // import About from './components/About';
 // import Home from './components/Home';
@@ -18,7 +18,7 @@ import { SettingPage } from "./pages/SettingPage";
 const App = () => {
   return (
     <Routes>
-
+      <Route path="/" element={<Navigate replace to="/main"/>}/>
       <Route path="/main" element={<MainPage/>}>
         <Route path=":user_id" element={<MyMainPage/>}/>
       </Route>
