@@ -18,7 +18,6 @@ import { SettingPage } from "./pages/SettingPage";
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate replace to="/main"/>}/>
       <Route path="/main" element={<MainPage/>}>
         <Route path=":user_id" element={<MyMainPage/>}/>
       </Route>

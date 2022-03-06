@@ -8,6 +8,8 @@ const GiveCandyPage = () => {
 
   const navigate = useNavigate();
 
+
+
   const inputName = (e) => {
     navigate("/givecandy/input-name");
   }
@@ -26,8 +28,10 @@ const GiveCandyPage = () => {
       <p className="font1">{userName}님의 선물함</p>
 
       <img src={"/img/candyMachine_512.png"} height="450" width="450" alt="candyMachine" />
+
       <div className="overlay">
         <button onClick={inputName} className="giveBtn"><img src={"/img/btn_give_light_250.png"} height="150" width="150" /></button>
+
       </div>
 
     </div>

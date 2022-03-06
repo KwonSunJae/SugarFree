@@ -5,6 +5,7 @@ import './GiveCandyPage.css';
 
 
 const InputName = () => {
+
   const [nickname, setNickname] = useState("");
   const navigate = useNavigate();
 
@@ -20,7 +21,6 @@ const InputName = () => {
   const saveNickname = (e) =>{
     setNickname(e.target.value);  // 닉네임 - 서버연결
   }
-
   return (
     <div className="bgc" >
       <style>
@@ -28,16 +28,19 @@ const InputName = () => {
       </style>
       <br></br>
       <p className="font1">당신의 이름은?</p>
+
       <div className="grayBox">
         <input type="text"
         onChange={saveNickname}
         >
+
 
         </input>
 
       </div>
 
       <button onClick={typeSelect} className="imgbutton"><img src={"/img/btn_next_light_250.png"} height="150" width="150" /></button>
+
 
     </div>
   );
