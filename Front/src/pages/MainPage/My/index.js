@@ -1,0 +1,1 @@
+export { default as MyMainPage } from "./MyMainPage.jsx";

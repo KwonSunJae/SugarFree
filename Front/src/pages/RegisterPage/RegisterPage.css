@@ -1,0 +1,41 @@
+*{
+  margin-top: 0px;
+  padding:0;
+}
+
+.bgc {
+  background-color: #F2DBD8;
+}
+
+.imgbutton {
+  background-color: transparent;
+ 
+  
+}
+
+
+.font {
+  font-family: 'Gowun Batang', serif;
+  color: rgb(63, 61, 61);
+  font-size: 20px;
+  margin: 8px 0px 8px 0px;
+  margin-left: 0;
+  
+}
+
+.input{
+  width: 100px;
+  height: 20px;
+  background-color: #FFBCAF;
+  border: 1px solid black;
+  border-radius: 5px;
+
+}
+.input2{
+  width: 200px;
+  height: 20px;
+  background-color: #FFBCAF;
+  border: 1px solid black;
+  border-radius: 5px;
+
+}

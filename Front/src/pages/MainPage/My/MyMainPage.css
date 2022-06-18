@@ -1,0 +1,42 @@
+*{
+  margin-top: 0px;
+  padding:0;
+}
+
+.bgc {
+  background-color: #F2DBD8;
+}
+
+.imgbutton {
+  background-color: #F2DBD8;
+  margin-left: 20px;
+  margin-right: 0px;
+  border: none;
+  
+}
+
+
+.font1 {
+  font-family: 'Gowun Batang', serif;
+  margin-left: 20px;
+  color: rgb(63, 61, 61);
+  line-height: 1.0;
+  font-size: 20px;
+}
+
+.font2 {
+  font-family: 'Gowun Batang', serif;
+  margin-top: 15px;
+  margin-left: 20px;
+  color: rgb(63, 61, 61);
+  line-height: 1.0;
+  font-size: 16px;
+}
+.font3 {
+  font-family: 'Gowun Batang', serif;
+  margin-top: 15px;
+  margin-left: 5px;
+  color: rgb(63, 61, 61);
+  line-height: 1.0;
+  font-size: 16px;
+}
