@@ -1,4 +1,4 @@
-name: Back_DEV_DEPLOY
+name: Back_REL_DEPLOY
 
 # Controls when the workflow will run
 on:
