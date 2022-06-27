@@ -25,6 +25,7 @@ jobs:
             git reset --hard
             git fetch
             git pull
+
       - name: action-slack
         uses: 8398a7/action-slack@v3
         with:
