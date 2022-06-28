@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Route, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../utils/api';
 import { MyMainPage } from '../MainPage/My';
 
 
