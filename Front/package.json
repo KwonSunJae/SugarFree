@@ -43,5 +43,5 @@
   "repository": "https://github.com/Team-Ssery/SugarFree.git",
   "author": "PL",
   "license": "MIT",
-  "proxy": "http://localhost:5051"
+  "proxy": "http://dev-api-tutor.openinfra-kr.org:5051"
 }
