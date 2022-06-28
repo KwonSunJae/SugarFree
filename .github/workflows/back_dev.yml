@@ -21,16 +21,19 @@ jobs:
           host: ${{ secrets.BACK_DEV_HOST }}
           username: ${{ secrets.USER }}
           script: |
+            forever stop server.js
             cd SugarFree
             git reset --hard
             git fetch
             git pull
+            forever start server.js
+            
 
       - name: action-slack
         uses: 8398a7/action-slack@v3
         with:
          status: ${{ job.status }}
-         author_name: Sloth Backend - dev
+         author_name: Develop Branch Backend - Committed by Tutor
          fields: repo,commit,message,author # action,eventName,ref,workflow,job,took 추가할 수 있음
          mention: here
          if_mention: failure,cancelled
