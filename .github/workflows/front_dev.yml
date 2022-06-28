@@ -25,6 +25,7 @@ jobs:
             git reset --hard
             git fetch
             git pull
+            cd Front
             yarn build
       - name: action-slack
         uses: 8398a7/action-slack@v3

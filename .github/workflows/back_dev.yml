@@ -26,6 +26,8 @@ jobs:
             git reset --hard
             git fetch
             git pull
+            cd Server
+            cd app
             forever start server.js
             
 
