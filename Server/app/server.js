@@ -4,7 +4,7 @@ const app = express();
 const dotenv = require("dotenv");
 const cors = require("cors");
 dotenv.config();
-const whitelist = ["http://dev-front-tutor.openinfra-kr.org/"];
+const whitelist = ["http://dev-front-tutor.openinfra-kr.org"];
 
 const corsOptions ={
   origin: function(origin, callback){
@@ -13,7 +13,8 @@ const corsOptions ={
     }else{
       callback(new Error("Not allowed Origin!"));
     }
-  }
+  },
+  
 }
 const api = require("./src/routes/index");
 app.use(cors());
