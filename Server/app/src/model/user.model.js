@@ -6,11 +6,10 @@ class UserModel {
   // 총 가입자 수를 return
   static getTotalMember() {
     return new Promise((resolve, reject) => {
-      const query = `SELECT COUNT(user_id) FROM users;`;
+      const query = `SELECT COUNT(user_id) as count FROM users;`;
       db.query(query, (err, results) => {
         if (err) reject(err);
-        const result = Object.keys(results);
-        resolve(result[0]);
+        resolve(results[0].count);
       });
     });
   }
@@ -18,11 +17,10 @@ class UserModel {
   // 총 캔디 수를 return
   static getTotalCandy() {
     return new Promise((resolve, reject) => {
-      const query = `SELECT COUNT(candy_num) FROM candy;`;
+      const query = `SELECT COUNT(candy_num) as count FROM candy;`;
       db.query(query, (err, results) => {
         if (err) reject(err);
-        const result = Object.keys(results);
-        resolve(result[0]);
+        resolve(results[0].count);
       });
     });
   }

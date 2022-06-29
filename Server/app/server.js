@@ -9,7 +9,8 @@ const whitelist = [
   "https://dev-front-tutor.openinfra-kr.org/",
   "http://dev-front-tutor.openinfra-kr.org",
   "https://front-tutor.openinfra-kr.org",
-  "http://front-tutor.openinfra-kr.org"
+  "http://front-tutor.openinfra-kr.org",
+  "http://localhost:3000"
 ];
 
 
