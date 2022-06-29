@@ -25,3 +25,16 @@ jobs:
             git reset --hard
             git fetch
             git pull
+            cd Front
+            yarn build
+      - name: action-slack
+        uses: 8398a7/action-slack@v3
+        with:
+         status: ${{ job.status }}
+         author_name: Develop Brach Front Commited by Tutor
+         fields: repo,commit,message,author # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: here
+         if_mention: failure,cancelled
+        env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: always() # Pick up events even if the job fails or is canceled.

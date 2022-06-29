@@ -5,6 +5,7 @@ const db = mysql.createConnection({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT,
 });
 
 db.connect((err) => {
@@ -21,8 +22,8 @@ db.connect((err) => {
 
   let createTableCandy = `CREATE TABLE IF NOT EXISTS candy(
     candy_num INT NOT NULL AUTO_INCREMENT,
-    message VARCHAR(200),
-    emoji_num INT NOT NULL,
+    message VARCHAR(2000),
+    emoji_num VARCHAR(50) NOT NULL,
     img MEDIUMBLOB,
     sender_name VARCHAR(20) NOT NULL,
     user_id VARCHAR(20) NOT NULL,

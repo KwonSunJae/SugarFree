@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 
 const GiftOption = ["사탕", "초콜릿", "기타", "유머"];
@@ -25,16 +25,20 @@ const SelectGift = () =>{
     }
     const clickitem = (e) => {
         //여기에 css 추가 : 배경색 변경
-        setChoiceGift(e.target); // 선물보낼 이모티콘 : 서버연결 
+        setChoiceGift(e.target.src); // 선물보낼 이모티콘 : 서버연결 
         //여기 밑에 부분은 서버에 어떤걸로 값 보낼지 몰라서 img 객체 / alt 값 둘다 log로 찍어놨어(값이 잘 나오는지 확인용)
         console.log(e.target);
-        console.log(e.target.alt);
-    }
+        console.log(e.target.src);
 
+    }
+    useEffect(function(){
+        setUserName(localStorage.getItem("senderNick"));
+      },[])
     const WriteMessage = () => {
         if(choiceGift === ""){
             alert("선물을 선택하지 않았어요. 선물을 골라주세요!");
         }else {
+            localStorage.setItem("giveImg",choiceGift);
             navigate("/givecandy/write-message");
             setChoiceGift("");
             setGiftoption("0");

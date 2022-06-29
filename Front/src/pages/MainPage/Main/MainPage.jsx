@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
 import './MainPage.css';
 import Bounce from "../Animation/Bounce"
+import axios from "../../../utils/api";
 
 
 const MainPage = () => {
@@ -17,6 +18,15 @@ const MainPage = () => {
   const resisterClick = (e) => {
     navigate("/register");
   }
+
+  useEffect(() => {
+    axios.get("/api/main")
+      .then((response) => {
+        setUserNum(response.data.total_member);
+        setCandyNum(response.data.total_candy);
+    })
+   }
+    , []);
 
   const [userNum, setUserNum] = useState(0);
   const [candyNum, setCandyNum] = useState(0);

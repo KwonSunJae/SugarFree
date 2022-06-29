@@ -7,9 +7,11 @@ const TOKEN_INVALID = -2;
 
 module.exports = {
   sign: async (user) => {
+    console.log(user);
     const payLoad = {
-      user_id: user.user_id,
+      user_id: user,
     };
+    console.log("token 발행 아이디 :",user);
     const result = {
       token: jwt.sign(payLoad, secretKey, option),
       refreshToken: randToken.uid(256),

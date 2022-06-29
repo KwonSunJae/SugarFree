@@ -1,32 +1,46 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import axios from "../../utils/api"
 const CheckGiveCandy = () =>{
     
     const [userName, setUserName] = useState(""); //받는 사람 : 서버연결
-    const [flag, setFlag] = useState("false");
-
+    const [flag, setFlag] = useState("");
+    
     const navigate = useNavigate();
     // 닉네임, 받는유저, 선물된 이모티콘, 메세지내용이 서버로 성공적으로 보내지면 => 여기도 if문으로 해서 성공시
     //if()
-    setFlag("true");
-
-    if(flag){
-        //timeout으로 안하면 이전 페이지에서 alert수행해서 timeout으로 설정
-        setTimeout(()=> alert({userName}+"님께 선물을 보냈어요!"),0);
-    } else {
-        //실패시
-        //givecandy 첫 화면으로 이동
-        setTimeout(()=> alert({userName}+"님께 선물을 보내지 못했어요. 다시 시도해주세요"),0);
-        navigate("/main/givecandy");
-
-    }
+    
+    
+    useEffect(function(){
+        const Gift ={
+            name: localStorage.getItem("giverNick"),
+            description: localStorage.getItem("giveMsg"),
+            emoji: localStorage.getItem("giveImg"),
+            photo: "",
+            user_id: localStorage.getItem("giveId"),
+        }
+        setUserName(localStorage.getItem("senderNick"));
+        console.log(Gift);
+        axios.post("/api/givecandy",Gift).then((res)=>{
+            if(res.data.result == true){
+                alert(Gift.user_id+"님께 선물을 보냈어요!");
+                navigate("/main/"+Gift.user_id);
+            }
+            else{
+                alert(Gift.user_id+"님께 선물을 보내지 못했어요. 다시 시도해주세요");
+                navigate("/main/"+Gift.user_id);
+            }
+        })
+        setFlag(localStorage.getItem("giveId"));
+    },[])
+    
 
 
 
     const goToMain = () => {
-        navigate("/main/"+{userName});
-        setFlag("flase");
+
+        navigate("/main/"+flag);
+        
     }
     return (
         <div>

@@ -15,7 +15,10 @@ import { WriteMessagePage } from "./pages/GiveCandyPage";
 import { CheckGiveCandyPage } from "./pages/GiveCandyPage";
 import { SettingPage } from "./pages/SettingPage";
 
+
+
 const App = () => {
+
   return (
     <Routes>
       <Route path="/main" element={<MainPage/>}>
