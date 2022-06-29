@@ -43,6 +43,8 @@ class UserModel {
       const query = "SELECT nickname FROM users WHERE user_id=?;";
       db.query(query, [user_id], (err, results) => {
         if (err) reject(err);
+
+        console.log(results);
         return resolve(results[0]);
       });
     });
