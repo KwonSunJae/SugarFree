@@ -21,7 +21,7 @@ jobs:
           host: ${{ secrets.BACK_DEV_HOST }}
           username: ${{ secrets.USER }}
           script: |
-            forever stop server.js
+            forever stop 0
             cd SugarFree
             git reset --hard
             git fetch
