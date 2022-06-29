@@ -14,8 +14,8 @@ const CheckGiveCandy = () =>{
     useEffect(function(){
         const Gift ={
             name: localStorage.getItem("giverNick"),
-            description: localStorage.getItem("giveImg"),
-            emoji: localStorage.getItem("giveGift"),
+            description: localStorage.getItem("giveMsg"),
+            emoji: localStorage.getItem("giveImg"),
             photo: "",
             user_id: localStorage.getItem("giveId"),
         }
