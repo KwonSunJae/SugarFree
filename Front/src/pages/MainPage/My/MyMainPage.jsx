@@ -34,11 +34,7 @@ const MyMainPage = () => {
         navigate("/givecandy");
       }
     }
-    localStorage.removeItem("give");
-        localStorage.removeItem("giveId");
-        localStorage.setItem("give","true");
-        localStorage.setItem("giveId",user_id);
-        navigate("/givecandy");
+    
     
   },[]);
   useEffect(()=>{
