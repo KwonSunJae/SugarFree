@@ -3,7 +3,7 @@ import {useLocation, useParams} from 'react-router-dom';
 import './MyMainPage.css';
 import CustomPopup from "./CustomPopup";
 import axios from '../../../utils/api';
-
+import decodeJwt from "../../../utils/decode_jwt";
 
 const MyMainPage = () => {
   let params = useParams();
@@ -17,7 +17,11 @@ const MyMainPage = () => {
   const [myCandyNum, setMyCandyNum] = useState();
   const [visibility, setVisibility] = useState(false);
   const [userUrl, setUserUrl] = useState("");
-
+  
+  useEffect(()=>{
+    const sessionID = sessionStorage.getItem("jwt");
+    console.log(decodeJwt(sessionID));
+  },[]);
   useEffect(()=>{
     //axios로 유저 아이디를 보내서 nickname을 받아옴
     axios.get("/api/userinfo?id="+user_id)
