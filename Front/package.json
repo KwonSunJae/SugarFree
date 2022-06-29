@@ -13,6 +13,7 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "reactjs-popup": "^2.0.5",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -43,5 +44,5 @@
   "repository": "https://github.com/Team-Ssery/SugarFree.git",
   "author": "PL",
   "license": "MIT",
-  "proxy": "http://dev-api-tutor.openinfra-kr.org:5051"
+  "proxy": "https://dev-api-tutor.openinfra-kr.org"
 }

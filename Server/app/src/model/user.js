@@ -20,6 +20,8 @@ class User {
   async getNickname() {
     try {
       const getUserInfo = await UserModel.getNickname(this.body.id);
+      console.log("sssssssss");
+      console.log(this.body.id)
       return getUserInfo;
     } catch (err) {
       console.error(err);

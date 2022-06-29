@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import {useLocation, useParams} from 'react-router-dom';
 import './MyMainPage.css';
 import CustomPopup from "./CustomPopup";
-import axios from 'axios';
+import axios from '../../../utils/api';
 
 
 const MyMainPage = () => {
   let params = useParams();
   let location = useLocation();
   const user_id = params.user_id;
-
+  
   const popupCloseHandler = (e) => {
     setVisibility(e);
   };
@@ -20,7 +20,7 @@ const MyMainPage = () => {
 
   useEffect(()=>{
     //axios로 유저 아이디를 보내서 nickname을 받아옴
-    axios.get("/api/userinfo", {params: {id : user_id}})
+    axios.get("/api/userinfo?id="+user_id)
       .then((res) =>{
         setUserName(res.data.nickname);
       })
@@ -30,7 +30,7 @@ const MyMainPage = () => {
   }, [user_id])
 
   useEffect(() =>{
-    axios.post("/api/mycandy" , {params: {id : user_id}})
+    axios.post("/api/mycandy" , {id : user_id})
       .then((res) =>{
         setMyCandyNum(res.data.length);
       })
@@ -41,7 +41,7 @@ const MyMainPage = () => {
 
   useEffect(()=>{
     //페이지 진입 시, url 세팅
-    setUserUrl(`http://localhost:3000${location.pathname}`);
+    setUserUrl(`http://dev-front-tutor.openinfra-kr.ogr/${location.pathname}`);
   }, [location])
   
   const handlePopupClick = (e) =>{
