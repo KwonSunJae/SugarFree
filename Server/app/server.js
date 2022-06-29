@@ -4,7 +4,12 @@ const app = express();
 const dotenv = require("dotenv");
 const cors = require("cors");
 dotenv.config();
-const whitelist = ["http://dev-front-tutor.openinfra-kr.org"];
+const whitelist = [
+  "https://dev-front-tutor.openinfra-kr.org/",
+  "http://dev-front-tutor.openinfra-kr.org",
+  "https://front-tutor.openinfra-kr.org",
+  "http://front-tutor.openinfra-kr.org"
+];
 
 const corsOptions ={
   origin: function(origin, callback){
