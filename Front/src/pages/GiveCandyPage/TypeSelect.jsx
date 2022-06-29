@@ -21,6 +21,7 @@ const TypeSelect = () => {
 
   const selectGift = (e) => {
     if(typeflag){
+      localStorage.setItem("giveGift",false);
       navigate("/givecandy/input-name/type-select/select-gift");
       settypeflag(false);
     } else{

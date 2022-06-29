@@ -8,11 +8,12 @@ const InputName = () => {
 
   const [nickname, setNickname] = useState("");
   const navigate = useNavigate();
-
+  
   const typeSelect = (e) => {
     if(nickname === ""){
       alert("이름을 입력하지 않았어요. 입력해주세요");
     }else{
+      localStorage.setItem("giverNick",nickname);
       navigate("/givecandy/input-name/type-select");
       setNickname("");
     }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 
 const WriteMessage = () =>{
@@ -9,10 +9,14 @@ const WriteMessage = () =>{
         setContent(e.target.value);
     }
     const onclick = (e) => {
+        localStorage.setItem("giveMsg",content);
         navigate("/givecandy/check-givecandy");
         console.log(content);  // content 내용 - 서버연결
         setContent("");
     }
+    useEffect(function(){
+        setUserName(localStorage.getItem("senderNick"));
+      },[])
     return (
         <div>
             <style>

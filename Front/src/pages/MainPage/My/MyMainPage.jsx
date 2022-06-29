@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useLocation, useParams} from 'react-router-dom';
+import {Navigate, useLocation, useNavigate, useParams} from 'react-router-dom';
 import './MyMainPage.css';
 import CustomPopup from "./CustomPopup";
 import axios from '../../../utils/api';
@@ -17,10 +17,23 @@ const MyMainPage = () => {
   const [myCandyNum, setMyCandyNum] = useState();
   const [visibility, setVisibility] = useState(false);
   const [userUrl, setUserUrl] = useState("");
-  
+  const navigate = useNavigate();
   useEffect(()=>{
-    const sessionID = sessionStorage.getItem("jwt");
-    console.log(decodeJwt(sessionID));
+    const sessionID = localStorage.getItem("jwt");
+    console.log(sessionID);
+    if(sessionID){
+      const loginId = decodeJwt(sessionID);
+      console.log(loginId,"< token id");
+      console.log(user_id,"log id");
+      if(loginId!= user_id){
+        localStorage.removeItem("give");
+        localStorage.removeItem("giveId");
+        localStorage.setItem("give","true");
+        localStorage.setItem("giveId",user_id);
+        navigate("/givecandy");
+      }
+    }
+    
   },[]);
   useEffect(()=>{
     //axios로 유저 아이디를 보내서 nickname을 받아옴

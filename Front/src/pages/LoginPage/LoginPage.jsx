@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Route, useNavigate } from 'react-router-dom';
 import axios from '../../utils/api';
 import { MyMainPage } from '../MainPage/My';
-
+import setAuthorizationToken from "../../utils/auth_login"
 
 axios.defaults.withCredentials = true;
 
@@ -67,11 +67,13 @@ const InputField = ({ data, onChange }) => {
                         const token  = res.data.token;
                         localStorage.setItem('jwtToken',token);
                         // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-                        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
+                        setAuthorizationToken(token);
+                        console.log(token)
                         navigate(`/main/${data.id}`);
                         
                     } else {
+                        const token  = res.data.token;
+                        setAuthorizationToken(token);
                         if (result === "id invalid") {
                             alert("Wrong Id. Please Check Again");
                         } else {
