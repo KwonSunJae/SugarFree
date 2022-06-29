@@ -19,7 +19,7 @@ const MyMainPage = () => {
   const [userUrl, setUserUrl] = useState("");
   const navigate = useNavigate();
   useEffect(()=>{
-    const loginId ="";
+    var loginId ="";
     const sessionID = localStorage.getItem("jwt");
     console.log(sessionID);
     if(sessionID){
