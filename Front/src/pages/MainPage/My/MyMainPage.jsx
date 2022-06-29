@@ -19,6 +19,7 @@ const MyMainPage = () => {
   const [userUrl, setUserUrl] = useState("");
   const navigate = useNavigate();
   useEffect(()=>{
+    
     const sessionID = localStorage.getItem("jwt");
     console.log(sessionID);
     if(sessionID){
@@ -33,6 +34,11 @@ const MyMainPage = () => {
         navigate("/givecandy");
       }
     }
+    localStorage.removeItem("give");
+        localStorage.removeItem("giveId");
+        localStorage.setItem("give","true");
+        localStorage.setItem("giveId",user_id);
+        navigate("/givecandy");
     
   },[]);
   useEffect(()=>{
