@@ -19,20 +19,21 @@ const MyMainPage = () => {
   const [userUrl, setUserUrl] = useState("");
   const navigate = useNavigate();
   useEffect(()=>{
-    
+    const loginId ="";
     const sessionID = localStorage.getItem("jwt");
     console.log(sessionID);
     if(sessionID){
-      const loginId = decodeJwt(sessionID);
+      loginId = decodeJwt(sessionID);
       console.log(loginId,"< token id");
       console.log(user_id,"log id");
-      if(loginId!= user_id){
-        localStorage.removeItem("give");
-        localStorage.removeItem("giveId");
-        localStorage.setItem("give","true");
-        localStorage.setItem("giveId",user_id);
-        navigate("/givecandy");
-      }
+      
+    }
+    if(loginId!= user_id){
+      localStorage.removeItem("give");
+      localStorage.removeItem("giveId");
+      localStorage.setItem("give","true");
+      localStorage.setItem("giveId",user_id);
+      navigate("/givecandy");
     }
     
     
