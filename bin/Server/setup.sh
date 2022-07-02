@@ -16,8 +16,9 @@ sudo npm install -g yarn
 yarn -b
 sudo apt install certbot
 # git clone repository
-git clone -b develop https://github.com/KwonSunJae/SugarFree.git
-
+git reset --hard
+git fetch
+git pull
 # nginx config 파일 배치
 cd /etc/nginx/sites-enabled
 rm -rf default
