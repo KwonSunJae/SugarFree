@@ -33,5 +33,6 @@ sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
 
-sudo certbot --nginx -y
+sudo certbot --nginx
+
 sudo systemctl restart nginx
