@@ -1,7 +1,7 @@
 server {
         access_log /var/log/nginx/reverse-access.log;
         error_log /var/log/nginx/reverse_error.log;
-
+        listen 80;
         server_name dev-api-tutor.openinfra-kr.org; # managed by Certbot
         location / {
                 proxy_pass http://127.0.0.1:5051;
