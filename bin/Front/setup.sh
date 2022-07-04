@@ -4,8 +4,10 @@
 sudo apt-get install update
 
 #install git, nginx, node, yarn, certbot
-
-sudo apt install -y  git
+echo "=============================================="
+echo "Essential Packages Installing"
+echo "=============================================="
+#sudo apt install -y  git
 sudo apt install -y  nginx 
 sudo curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt-get install -y nodejs
@@ -15,11 +17,21 @@ npm -v
 sudo npm install -g yarn
 yarn -v
 sudo apt install -y certbot
+
+echo "=============================================="
+echo "git Pulling"
+echo "=============================================="
 # git clone repository
+cd SugarFree
 git reset --hard
 git fetch
 git pull
 # nginx config 파일 배치
+
+echo "=============================================="
+echo "nginx confing Setting for ssl"
+echo "=============================================="
+
 cd /etc/nginx/sites-enabled
 sudo rm -rf default
 
