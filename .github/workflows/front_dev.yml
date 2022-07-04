@@ -39,7 +39,7 @@ jobs:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if: failure() # Pick up events even if the job fails or is canceled.
   Front_Rebuilding:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
