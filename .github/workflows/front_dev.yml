@@ -9,7 +9,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  Git_Cloning:
+  SSH:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,22 +27,6 @@ jobs:
             git pull
             cd Front
             
-      - name: action-slack
-        uses: 8398a7/action-slack@v3
-        with:
-         status: ${{ job.status }}
-         author_name: Develop Brach Front Commited by Tutor
-         fields: repo,commit,message,author,action,eventName,ref,workflow,job,took # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: here
-         if_mention: failure,cancelled
-        env:
-         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: failure() # Pick up events even if the job fails or is canceled.
-  Front_Rebuilding:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
       - name: Front Rebuilding...
         uses: appleboy/ssh-action@master
         with:
@@ -52,30 +36,16 @@ jobs:
           script: |
             cd SugarFree/Front
             yarn build
-      - name: action-slack
-        uses: 8398a7/action-slack@v3
-        with:
-         status: ${{ job.status }}
-         author_name: Develop Brach Front Commited by Tutor
-         fields: repo,commit,message,author,action,eventName,ref,workflow,job,took # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: here
-         if_mention: failure,cancelled
-        env:
-         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: failure() # Pick up events even if the job fails or is canceled.
-  CI:
 
-    runs_on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
       - name: action-slack
         uses: 8398a7/action-slack@v3
         with:
          status: ${{ job.status }}
          author_name: Develop Brach Front Commited by Tutor
-         fields: repo,commit,message,author,action,eventName,ref,workflow,job,took # action,eventName,ref,workflow,job,took 추가할 수 있음
+         fields: repo,message,author,eventName,workflow,job,took,steps # action,eventName,ref,workflow,job,took 추가할 수 있음
          mention: here
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if: always() # Pick up events even if the job fails or is canceled.
+        
