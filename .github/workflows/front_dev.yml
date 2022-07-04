@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Run scripts in server
+      - name: git cloning...
         uses: appleboy/ssh-action@master
         with:
           key: ${{ secrets.DEV_SSH_KEY }}
@@ -26,13 +26,23 @@ jobs:
             git fetch
             git pull
             cd Front
+            
+      - name: Front Rebuilding...
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.DEV_SSH_KEY }}
+          host: ${{ secrets.FRONT_DEV_HOST }}
+          username: ${{ secrets.USER }}
+          script: |
+            cd SugarFree/Front
             yarn build
+
       - name: action-slack
         uses: 8398a7/action-slack@v3
         with:
          status: ${{ job.status }}
          author_name: Develop Brach Front Commited by Tutor
-         fields: repo,commit,message,author # action,eventName,ref,workflow,job,took 추가할 수 있음
+         fields: repo,commit,message,author,action,eventName,ref,workflow,job,took # action,eventName,ref,workflow,job,took 추가할 수 있음
          mention: here
          if_mention: failure,cancelled
         env:
