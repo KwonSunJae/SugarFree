@@ -9,7 +9,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  SSH:
+  Stop_server:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,28 +23,9 @@ jobs:
           script: |
             forever stop 0
             
-      - name: git cloning...
-        uses: appleboy/ssh-action@master
-        with:
-          key: ${{ secrets.DEV_SSH_KEY }}
-          host: ${{ secrets.BACK_DEV_HOST }}
-          username: ${{ secrets.USER }}
-          script: |
+      
             
-            cd SugarFree
-            git reset --hard
-            git fetch
-            git pull
-            
-      - name: Server runs on Background 
-        uses: appleboy/ssh-action@master
-        with:
-          key: ${{ secrets.DEV_SSH_KEY }}
-          host: ${{ secrets.BACK_DEV_HOST }}
-          username: ${{ secrets.USER }}
-          script: |
-            cd SugarFree/Server/app
-            forever start server.js
+      
             
 
       - name: action-slack
@@ -57,4 +38,73 @@ jobs:
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: always() # Pick up events even if the job fails or is canceled.
+        if: failure() # Pick up events even if the job fails or is canceled.
+  Git_Cloning:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: git cloning...
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.DEV_SSH_KEY }}
+          host: ${{ secrets.BACK_DEV_HOST }}
+          username: ${{ secrets.USER }}
+          script: |
+            
+            cd SugarFree
+            git reset --hard
+            git fetch
+            git pull
+      - name: action-slack
+        uses: 8398a7/action-slack@v3
+        with:
+         status: ${{ job.status }}
+         author_name: Develop Branch Backend - Committed by Tutor
+         fields: repo,commit,message,author,action,eventName,ref,workflow,job,took # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: here
+         if_mention: failure,cancelled
+        env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: failure() # Pick up events even if the job fails or is canceled.
+  Run_Server:
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Server runs on Background 
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.DEV_SSH_KEY }}
+          host: ${{ secrets.BACK_DEV_HOST }}
+          username: ${{ secrets.USER }}
+          script: |
+            cd SugarFree/Server/app
+            forever start server.js
+    
+      - name: action-slack
+        uses: 8398a7/action-slack@v3
+        with:
+         status: ${{ job.status }}
+         author_name: Develop Branch Backend - Committed by Tutor
+         fields: repo,commit,message,author,action,eventName,ref,workflow,job,took # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: here
+         if_mention: failure,cancelled
+        env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: failure() # Pick up events even if the job fails or is canceled.
+  CI:
+    runs-on: ubuntu-lates
+    steps:
+      - uses: actions/checkout@v2
+      - name: action-slack
+        uses: 8398a7/action-slack@v3
+        with:
+         status: ${{ job.status }}
+         author_name: Develop Branch Backend - Committed by Tutor
+         fields: repo,commit,message,author,action,eventName,ref,workflow,job,took # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: here
+         if_mention: failure,cancelled
+        env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: always()
