@@ -55,7 +55,7 @@ const InputInfo = ({ userInfo, onChangeUserInfo, onClickSave }) => {
         console.log(selectedQuestion)
         onChangeUserInfo({
             ...userInfo,
-            ['questionNum']:  selectedQuestion 
+            ['questionNum']:  selectedQuestion, 
         });
     };
 
