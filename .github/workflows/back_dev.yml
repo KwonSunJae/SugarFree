@@ -29,7 +29,7 @@ jobs:
          status: ${{ job.status }}
          author_name: Back Server Stopping Forever failed...
          fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: 권순재, 장태준
+         mention: U033BH9PANP, U038TCQV90B
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
@@ -54,7 +54,7 @@ jobs:
          status: ${{ job.status }}
          author_name: Back Server Git cloning failed...
          fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: 권순재, 장태준
+         mention: U033BH9PANP, U038TCQV90B
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
@@ -76,7 +76,7 @@ jobs:
          status: ${{ job.status }}
          author_name: Back Server running Server failed...
          fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: 권순재, 장태준
+         mention: U033BH9PANP, U038TCQV90B
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
@@ -87,7 +87,7 @@ jobs:
          status: ${{ job.status }}
          author_name: Develop Branch Backend - Committed by Tutor
          fields: repo,message,author,eventName,workflow,job,took,step
-         mention: 권순재, 장태준
+         mention: U033BH9PANP, U038TCQV90B
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
