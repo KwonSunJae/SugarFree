@@ -32,6 +32,7 @@ sudo apt-get remove certbot
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 cd /home/ubuntu/SugarFree/Server/app
+npm install
 
 forever start server.js
 
