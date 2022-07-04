@@ -26,7 +26,18 @@ jobs:
             git fetch
             git pull
             cd Front
-            
+      - name: check_clonging
+        uses: 8398a7/action-slack@v3
+        with:
+         status: ${{ job.status }}
+         author_name: Front Server Git cloning failed...
+         fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: here
+         if_mention: failure,cancelled
+        env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: failure()
+
       - name: Front Rebuilding...
         uses: appleboy/ssh-action@master
         with:
@@ -36,13 +47,23 @@ jobs:
           script: |
             cd SugarFree/Front
             yarn build
-
+      - name: check_Frontrebuilding
+        uses: 8398a7/action-slack@v3
+        with:
+         status: ${{ job.status }}
+         author_name: Front Server building failed...
+         fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: here
+         if_mention: failure,cancelled
+        env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: failure()
       - name: action-slack
         uses: 8398a7/action-slack@v3
         with:
          status: ${{ job.status }}
          author_name: Develop Brach Front Commited by Tutor
-         fields: repo,message,author,eventName,workflow,job,took,step # action,eventName,ref,workflow,job,took 추가할 수 있음
+         fields: repo,message,eventName,workflow,job,took,step # action,eventName,ref,workflow,job,took 추가할 수 있음
          mention: here
          if_mention: failure,cancelled
         env:
