@@ -32,7 +32,7 @@ jobs:
          status: ${{ job.status }}
          author_name: Front Server Git cloning failed...
          fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: here
+         mention: 권순재, 장태준
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
@@ -53,7 +53,7 @@ jobs:
          status: ${{ job.status }}
          author_name: Front Server building failed...
          fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: here
+         mention: 권순재, 장태준
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
@@ -64,7 +64,7 @@ jobs:
          status: ${{ job.status }}
          author_name: Develop Brach Front Commited by Tutor
          fields: repo,message,eventName,workflow,job,took,step # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: here
+         mention: 권순재, 장태준
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required

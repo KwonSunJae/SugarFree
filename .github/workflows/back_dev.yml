@@ -21,7 +21,7 @@ jobs:
           host: ${{ secrets.BACK_DEV_HOST }}
           username: ${{ secrets.USER }}
           script: |
-            forever stop sss
+            forever stop 0
 
       - name: check_Stopserver
         uses: 8398a7/action-slack@v3
@@ -29,7 +29,7 @@ jobs:
          status: ${{ job.status }}
          author_name: Back Server Stopping Forever failed...
          fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: here
+         mention: 권순재, 장태준
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
@@ -54,7 +54,7 @@ jobs:
          status: ${{ job.status }}
          author_name: Back Server Git cloning failed...
          fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: here
+         mention: 권순재, 장태준
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
@@ -76,7 +76,7 @@ jobs:
          status: ${{ job.status }}
          author_name: Back Server running Server failed...
          fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: here
+         mention: 권순재, 장태준
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
@@ -87,7 +87,7 @@ jobs:
          status: ${{ job.status }}
          author_name: Develop Branch Backend - Committed by Tutor
          fields: repo,message,author,eventName,workflow,job,took,step
-         mention: here
+         mention: 권순재, 장태준
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
