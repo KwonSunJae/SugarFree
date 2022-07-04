@@ -1,4 +1,4 @@
-name: Back_DEV_DEPLOY
+name: BACK_DEV_DEPLOY
 
 # Controls when the workflow will run
 on:
@@ -21,7 +21,7 @@ jobs:
           host: ${{ secrets.BACK_DEV_HOST }}
           username: ${{ secrets.USER }}
           script: |
-            forever stop 0
+            forever stop sss
             
       - name: git cloning...
         uses: appleboy/ssh-action@master

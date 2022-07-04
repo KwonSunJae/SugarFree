@@ -42,7 +42,7 @@ jobs:
         with:
          status: ${{ job.status }}
          author_name: Develop Brach Front Commited by Tutor
-         fields: repo,message,author,eventName,workflow,job,took,steps # action,eventName,ref,workflow,job,took 추가할 수 있음
+         fields: repo,message,author,eventName,workflow,job,took,step # action,eventName,ref,workflow,job,took 추가할 수 있음
          mention: here
          if_mention: failure,cancelled
         env:
