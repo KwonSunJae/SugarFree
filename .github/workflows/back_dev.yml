@@ -21,7 +21,7 @@ jobs:
           host: ${{ secrets.BACK_DEV_HOST }}
           username: ${{ secrets.USER }}
           script: |
-            forever stop 0
+            forever stop SS
 
       - name: check_Stopserver
         uses: 8398a7/action-slack@v3
