@@ -10,9 +10,6 @@ const output = {
     // req.query를 하면 postman에서는 제대로 동작하지 않음.
     //const user = new User(req.body);
     const user = new User(req.query);
-    console.log(req.params);
-    console.log(req.body);
-    console.log(req.params);
     const response = await user.getNickname();
     return res.json(response);
   },
@@ -24,7 +21,6 @@ const output = {
   logout: async (req, res) => {
     const user = new User(req.query);
     const response = await user.validate();
-    console.log(response.result);
     if (response.result === false) {
       return res.json({ result: true });
     } else {

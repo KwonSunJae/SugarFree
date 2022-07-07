@@ -44,7 +44,7 @@ const MainPage = () => {
               @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
             </style>
             <br></br>
-            <p className="font">가입자 수 : {userNum}</p>
+            <p className="font">가입자 수 ! : {userNum}</p>
             <p className="font">전달된 선물 수 : {candyNum}</p>
             <div className="sugar_box"style={{position: "relative" }}>
         

@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Run scripts in server
+      - name: git cloning...
         uses: appleboy/ssh-action@master
         with:
           key: ${{ secrets.DEV_SSH_KEY }}
@@ -26,15 +26,47 @@ jobs:
             git fetch
             git pull
             cd Front
+      - name: check_clonging
+        uses: 8398a7/action-slack@v3
+        with:
+         status: ${{ job.status }}
+         author_name: Front Server Git cloning failed...
+         fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: U033BH9PANP, U038TCQV90B
+         if_mention: failure,cancelled
+        env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: failure()
+
+      - name: Front Rebuilding...
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.DEV_SSH_KEY }}
+          host: ${{ secrets.FRONT_DEV_HOST }}
+          username: ${{ secrets.USER }}
+          script: |
+            cd SugarFree/Front
             yarn build
+      - name: check_Frontrebuilding
+        uses: 8398a7/action-slack@v3
+        with:
+         status: ${{ job.status }}
+         author_name: Front Server building failed...
+         fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: U033BH9PANP, U038TCQV90B
+         if_mention: failure,cancelled
+        env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: failure()
       - name: action-slack
         uses: 8398a7/action-slack@v3
         with:
          status: ${{ job.status }}
          author_name: Develop Brach Front Commited by Tutor
-         fields: repo,commit,message,author # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: here
+         fields: repo,message,eventName,workflow,job,took,step # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: U033BH9PANP, U038TCQV90B
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if: always() # Pick up events even if the job fails or is canceled.
+        

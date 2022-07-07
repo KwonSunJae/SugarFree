@@ -1,4 +1,4 @@
-name: Back_DEV_DEPLOY
+name: BACK_DEV_DEPLOY
 
 # Controls when the workflow will run
 on:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Run scripts in server
+      - name: Stopping server
         uses: appleboy/ssh-action@master
         with:
           key: ${{ secrets.DEV_SSH_KEY }}
@@ -22,22 +22,72 @@ jobs:
           username: ${{ secrets.USER }}
           script: |
             forever stop 0
+
+      - name: check_Stopserver
+        uses: 8398a7/action-slack@v3
+        with:
+         status: ${{ job.status }}
+         author_name: Back Server Stopping Forever failed...
+         fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: U033BH9PANP, U038TCQV90B
+         if_mention: failure,cancelled
+        env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: failure()
+
+
+      - name: git cloning...
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.DEV_SSH_KEY }}
+          host: ${{ secrets.BACK_DEV_HOST }}
+          username: ${{ secrets.USER }}
+          script: |
+            
             cd SugarFree
             git reset --hard
             git fetch
             git pull
-            cd Server
-            cd app
+      - name: check_clonging
+        uses: 8398a7/action-slack@v3
+        with:
+         status: ${{ job.status }}
+         author_name: Back Server Git cloning failed...
+         fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: U033BH9PANP, U038TCQV90B
+         if_mention: failure,cancelled
+        env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: failure()
+
+      - name: Server runs on Background 
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.DEV_SSH_KEY }}
+          host: ${{ secrets.BACK_DEV_HOST }}
+          username: ${{ secrets.USER }}
+          script: |
+            cd SugarFree/Server/app
             forever start server.js
             
-
+      - name: check_runons
+        uses: 8398a7/action-slack@v3
+        with:
+         status: ${{ job.status }}
+         author_name: Back Server running Server failed...
+         fields: repo,message,eventName,workflow,error # action,eventName,ref,workflow,job,took 추가할 수 있음
+         mention: U033BH9PANP, U038TCQV90B
+         if_mention: failure,cancelled
+        env:
+         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: failure()
       - name: action-slack
         uses: 8398a7/action-slack@v3
         with:
          status: ${{ job.status }}
          author_name: Develop Branch Backend - Committed by Tutor
-         fields: repo,commit,message,author # action,eventName,ref,workflow,job,took 추가할 수 있음
-         mention: here
+         fields: repo,message,author,eventName,workflow,job,took,step
+         mention: U033BH9PANP, U038TCQV90B
          if_mention: failure,cancelled
         env:
          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required

@@ -55,7 +55,7 @@ const InputInfo = ({ userInfo, onChangeUserInfo, onClickSave }) => {
         console.log(selectedQuestion)
         onChangeUserInfo({
             ...userInfo,
-            ['questionNum']: { selectedQuestion }
+            ['questionNum']:  selectedQuestion, 
         });
     };
 
@@ -118,7 +118,7 @@ const InputInfo = ({ userInfo, onChangeUserInfo, onClickSave }) => {
             <b className='font'>비밀번호 찾기 질문</b>
             <br/>
             <select id='questionSelect' onChange={onChangeQuestion} value={userInfo.questionNum}>
-
+                <option value='0'>--질문을선택해주세요--</option>
                 <option value='1'>{questions["1"]}</option>
                 <option value='2'>{questions["2"]}</option>
                 <option value='3'>{questions["3"]}</option>
@@ -146,7 +146,7 @@ const RegisterPage = () => {
         "pw": "",
         "nickname": "",
         "id_duplicate": false,
-        "questionNum": "1",
+        "questionNum": "",
         "answer": ""
     });
     const navigate = useNavigate();
@@ -161,6 +161,9 @@ const RegisterPage = () => {
         }
         else if (userInfo.answer === "") {
             alert("질문에 대한 답변이 빈칸일 수 없습니다.")
+        }
+        else if (userInfo.questionNum ===""){
+            alert("질문을 선택해주세요.")
         }
         else {
             console.log({ userInfo })
