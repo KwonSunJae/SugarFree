@@ -52,8 +52,8 @@ const InputField = ({ data, onChange }) => {
             console.log("Sending data to server...")
             //Login API 정해지면 URL 변경하겠음
             axios.post("/api/login", {
-                id: data.id,
-                pw: data.pw
+                id: data.id[0],
+                pw: data.pw[0]
             })
 
                 .then((res) => {
