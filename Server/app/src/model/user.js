@@ -20,7 +20,6 @@ class User {
   async getNickname() {
     try {
       const getUserInfo = await UserModel.getNickname(this.body.id);
-      console.log("sssssssss");
       console.log(this.body.id)
       return getUserInfo;
     } catch (err) {
@@ -29,26 +28,28 @@ class User {
   }
   async login() {
     try {
-      const { user_id, password } = await UserModel.getUserInfo(this.body.id);
-      console.log(password);
-      console.log(user_id);
-      console.log(this.body.id);
-      console.log(this.body.pw);
+      const userInfo = await UserModel.getUserInfo(this.body.id);
+      const user_id = userInfo.user_id;
+      const user_pw = userInfo.password;
       const jwtToken = await jwt.sign(user_id);
       if (user_id) {
-        if (user_id === this.body.id[0]) {
+        console.log(user_id,this.body.id)
+        if (user_id === this.body.id) {
           console.log("id equal");
-          const isEqualPW = bcrypt.compareSync(this.body.pw[0], password);
+          const isEqualPW = bcrypt.compareSync(this.body.pw, user_pw);
           if (isEqualPW) {
             console.log("pw equal");
             return { result: true, token: jwtToken };
           } else {
+            console.log("pw not equal");
             return { result: false };
           }
         } else {
+          console.log("id equal");
           return { result: false };
         }
       } else {
+        console.log("pw equal");
         return { result: false };
       }
     } catch (err) {

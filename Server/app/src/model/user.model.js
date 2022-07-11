@@ -29,8 +29,8 @@ class UserModel {
     return new Promise((resolve, reject) => {
       const query = "SELECT * FROM users WHERE user_id=?;";
       db.query(query, [user_id], (err, results) => {
-        if (resolve) resolve(results[0]);
-        else reject(err);
+        if (err) reject(err);
+        return resolve(results[0]);
       });
     });
   }
@@ -41,8 +41,6 @@ class UserModel {
       const query = "SELECT nickname FROM users WHERE user_id=?;";
       db.query(query, [user_id], (err, results) => {
         if (err) reject(err);
-
-        console.log(results);
         return resolve(results[0]);
       });
     });
@@ -54,7 +52,7 @@ class UserModel {
       const query = "SELECT user_id FROM users WHERE user_id=?;";
       db.query(query, [idColumn.id], (err, results) => {
         if (resolve) {
-          console.log(results[0]);
+          // console.log(results[0]);
           if (results[0] === undefined) {
             resolve({ result: true });
           } else {

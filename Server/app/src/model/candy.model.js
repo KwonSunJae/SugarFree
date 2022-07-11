@@ -4,7 +4,7 @@ class CandyModel {
   // 현재까지 받은 candy목록 조회
   static getCandyInfo(user_id) {
     return new Promise((resolve, reject) => {
-      const query = `SELECT c.sender_name,c.img,c.emoji_num FROM candy AS c JOIN users ON c.user_id=users.user_id WHERE users.user_id=?;`;
+      const query = `SELECT c.candy_num, c.sender_name,c.img,c.emoji_num FROM candy AS c JOIN users ON c.user_id=users.user_id WHERE users.user_id=?;`;
       db.query(query, [user_id], (err, results) => {
         if (err) reject(err);
         return resolve(results);
