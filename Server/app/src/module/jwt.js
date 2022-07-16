@@ -7,7 +7,6 @@ const TOKEN_INVALID = -2;
 
 module.exports = {
   sign: async (user) => {
-    console.log(user);
     const payLoad = {
       user_id: user,
     };
