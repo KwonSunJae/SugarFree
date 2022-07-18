@@ -1,17 +1,22 @@
-*{
+* {
   margin-top: 0px;
-  padding:0;
+  padding: 0;
 }
 
-.bgc {
-  background-color: #F2DBD8;
-}
+
 
 .imgbutton {
   background-color: transparent;
- 
-  
+
+
 }
+
+.resister {
+  width: 100%;
+  height: 100%;
+  background-color: #F2DBD8;
+}
+
 
 
 .font {
@@ -20,19 +25,25 @@
   font-size: 20px;
   margin: 8px 0px 8px 0px;
   margin-left: 0;
-  
-}
-
-.input{
-  width: 100px;
-  height: 20px;
-  background-color: #FFBCAF;
-  border: 1px solid black;
-  border-radius: 5px;
 
 }
-.input2{
-  width: 200px;
+
+.rinput {
+  display: inline-block;
+  margin: 10px auto;
+  width: 50%;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: #d3d3d3;
+
+}
+
+.input2 {
+  width: 50%;
   height: 20px;
   background-color: #FFBCAF;
   border: 1px solid black;
