@@ -1,6 +1,7 @@
 const UserModel = require("./user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("../module/jwt");
+const logger = require("../module/winston");
 
 class User {
   constructor(body) {
@@ -33,27 +34,26 @@ class User {
       const user_pw = userInfo.password;
       const jwtToken = await jwt.sign(user_id);
       if (user_id) {
-        console.log(user_id,this.body.id)
+        logger.info(`id=${user_id}, id2=${ this.body.id}`)
         if (user_id === this.body.id) {
-          console.log("id equal");
           const isEqualPW = bcrypt.compareSync(this.body.pw, user_pw);
           if (isEqualPW) {
-            console.log("pw equal");
+            logger.info("id and pw equal");
             return { result: true, token: jwtToken };
           } else {
-            console.log("pw not equal");
+            logger.error("pw not equal");
             return { result: false };
           }
         } else {
-          console.log("id equal");
+          logger.error("id not equal");
           return { result: false };
         }
       } else {
-        console.log("pw equal");
+        logger.error("no id");
         return { result: false };
       }
     } catch (err) {
-      console.error(err);
+      logger.error(err);
     }
   }
 
