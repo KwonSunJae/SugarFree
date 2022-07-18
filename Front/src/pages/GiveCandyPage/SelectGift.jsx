@@ -74,10 +74,10 @@ const SelectGift = () => {
                 </form>
                 <div className="showgift">
 
-                    {giftoption === "0" ? candyList.map((item, index) => <img width="100" height="100" onClick={clickitem} key={index} src={"/img/" + item} alt={GiftList[0] + "[" + index + "]"} />) : null}
-                    {giftoption === "1" ? chocoList.map((item, index) => <img width="100" height="100" onClick={clickitem} key={index} src={"/img/" + item} alt={GiftList[1] + "[" + index + "]"} />) : null}
-                    {giftoption === "2" ? etcList.map((item, index) => <img width="100" height="100" onClick={clickitem} key={index} src={"/img/" + item} alt={GiftList[2] + "[" + index + "]"} />) : null}
-                    {giftoption === "3" ? humorList.map((item, index) => <img width="100" height="100" onClick={clickitem} key={index} src={"/img/" + item} alt={GiftList[3] + "[" + index + "]"} />) : null}
+                    {giftoption === "0" ? candyList.map((item, index) => <img className="img" width="100" height="100" onClick={clickitem} key={index} src={"/img/" + item} alt={GiftList[0] + "[" + index + "]"} />) : null}
+                    {giftoption === "1" ? chocoList.map((item, index) => <img className="img" width="100" height="100" onClick={clickitem} key={index} src={"/img/" + item} alt={GiftList[1] + "[" + index + "]"} />) : null}
+                    {giftoption === "2" ? etcList.map((item, index) => <img className="img" width="100" height="100" onClick={clickitem} key={index} src={"/img/" + item} alt={GiftList[2] + "[" + index + "]"} />) : null}
+                    {giftoption === "3" ? humorList.map((item, index) => <img className="img" width="100" height="100" onClick={clickitem} key={index} src={"/img/" + item} alt={GiftList[3] + "[" + index + "]"} />) : null}
                 </div>
             </div>
             <button onClick={WriteMessage} className="nextBtn">
