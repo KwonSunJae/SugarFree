@@ -21,6 +21,10 @@ const process = {
     logger.info(JSON.stringify(req.body));
     return res.json(response);
   },
+  setCandyImage: async (req, res, next) => {
+    logger.info(JSON.stringify(req.file.uri));
+    return res.json({ url : req.file.uri });
+  },
 };
 
 module.exports = {
