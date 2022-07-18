@@ -14,22 +14,32 @@
 }
 
 .font1 {
+  margin-top: 50px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
 label {
   font-family: 'GowunBatang-Regular';
-  margin-left: 20px;
-
+  margin: 0 15px 0 15px;
 }
 
-.label.click {
-  border: 1px solid #808080;
+.img {
+  margin-top: 20px;
+}
+
+.img:hover {
+  border: #808080 1px solid;
+  border-radius: 10px;
+}
+
+label:hover {
+  font-weight: 700;
 }
 
 .nextBtn {
   font-family: 'GowunBatang-Regular';
-  margin-top: 20px;
+  margin-top: 50px;
   width: 150px;
   height: 50px;
   text-align: center;
@@ -53,7 +63,7 @@ label {
 .giveBtn {
 
   font-family: 'GowunBatang-Regular';
-  margin: 20px auto;
+  margin: 50px auto;
   width: 150px;
   height: 50px;
   text-align: center;
@@ -135,7 +145,7 @@ label {
 }
 
 .grayBox2 {
-  padding: 20px;
+  padding: 5px 20px 20px 20px;
   margin: 10px auto;
   background-color: #d3d3d3;
   border-radius: 20px;
