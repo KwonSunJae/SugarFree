@@ -22,6 +22,8 @@ const process = {
     return res.json(response);
   },
   setCandyImage: async (req, res, next) => {
+    console.log("is it in candyCTRL")
+    console.log(req.file)
     logger.info(JSON.stringify(req.file.uri));
     return res.json({ url : req.file.uri });
   },

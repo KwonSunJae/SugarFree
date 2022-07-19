@@ -53,6 +53,7 @@ function ObjectStorage(opts) {
 
 ObjectStorage.prototype._handleFile = function _handleFile(req, file, cb) {
     this.getDestination(req, file, async function (err, container) {
+        console.log("getDestination ---------------")
         if (err) {
             return cb(err);
         }
