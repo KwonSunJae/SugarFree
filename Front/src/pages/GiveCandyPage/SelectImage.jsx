@@ -10,9 +10,11 @@ const UploadMessage = () =>{
         setContent(e.target.value);
     }
     
-    const onImgChange = async (event) =>{
+    const onImgChange = async (event) => {
+        const formData = new FormData();
+        formData.append("img", event.target.files[0]);
         console.log(event.target.files[0])
-        const response  = await axios.post('/api/uploadImage',event.target.files[0]);
+        const response  = await axios.post('/api/uploadImage',formData);
         console.log(response.data);
     }
 
