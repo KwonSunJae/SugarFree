@@ -76,69 +76,69 @@ const InputInfo = ({ userInfo, onChangeUserInfo, onClickSave }) => {
     }
 
     return (
-        <>
-            <div id='register-div' className='resister'>
-                <p className='font'>아이디</p>
 
-                <input className='rinput'
-                    type="text"
-                    placeholder='ID'
-                    name="id"
-                    onChange={handleChange}
-                    value={userInfo.id}
-                />
-                <button
-                    name='id_duplicate'
-                    onClick={handleCheckDuplicate}>
-                    check
-                </button>
-                <br />
-                <p className='font'>비밀번호</p>
+        <div id='register-div' className='resister'>
+            <p className='title'>회원가입</p>
+            <p className='rtitle'>아이디</p>
 
-                <input className='rinput'
-                    id='pwdInput'
-                    type="password"
-                    placeholder='PWD'
-                    name="pw"
-                    onChange={handleChange}
-                    value={userInfo.pw}
-                />
-                <input type="checkbox" onClick={pwVisibility} />Show Password
-                <br />
-                <p className='font'>닉네임</p>
+            <input className='rinput'
+                type="text"
+                placeholder='ID'
+                name="id"
+                onChange={handleChange}
+                value={userInfo.id}
+            />
+            <button
+                className='resisBtn'
+                name='id_duplicate'
+                onClick={handleCheckDuplicate}>
+                중복확인
+            </button>
+            <br />
+            <p className='rtitle'>비밀번호</p>
 
-                <input className="rinput"
-                    type="text"
-                    placeholder='NICKNAME'
-                    name="nickname"
-                    onChange={handleChange}
-                    value={userInfo.nickname}
-                />
+            <input className='rinput'
+                id='pwdInput'
+                type="password"
+                placeholder='PWD'
+                name="pw"
+                onChange={handleChange}
+                value={userInfo.pw}
+            />
+            <input className="checkbox" type="checkbox" onClick={pwVisibility} />비밀번호 보기
+            <br />
+            <p className='rtitle'>닉네임</p>
 
-                <br />
-                <b className='font'>비밀번호 찾기 질문</b>
-                <br />
-                <select id='questionSelect' onChange={onChangeQuestion} value={userInfo.questionNum}>
-                    <option value='0'>--질문을선택해주세요--</option>
-                    <option value='1'>{questions["1"]}</option>
-                    <option value='2'>{questions["2"]}</option>
-                    <option value='3'>{questions["3"]}</option>
-                    <option value='4'>{questions["4"]}</option>
-                </select>
-                <br />
-                <p className='font'>비밀번호 찾기 답변</p>
+            <input className="rinput"
+                type="text"
+                placeholder='NICKNAME'
+                name="nickname"
+                onChange={handleChange}
+                value={userInfo.nickname}
+            />
 
-                <input className='rinput'
-                    id='answer'
-                    type="text"
-                    name='answer'
-                    onChange={handleChange}
-                    value={userInfo.answer}
-                />
-                <br />
-                <button onClick={handleClick}>Submit</button>
-            </div>
-        </>
+            <br />
+            <p className='rtitle'>비밀번호 찾기 질문</p>
+            <select id='questionSelect' onChange={onChangeQuestion} value={userInfo.questionNum}>
+                <option value='0'>질문을선택해주세요</option>
+                <option value='1'>{questions["1"]}</option>
+                <option value='2'>{questions["2"]}</option>
+                <option value='3'>{questions["3"]}</option>
+                <option value='4'>{questions["4"]}</option>
+            </select>
+            <br />
+            <p className='rtitle'>비밀번호 찾기 답변</p>
+
+            <input className='rinput'
+                id='answer'
+                type="text"
+                name='answer'
+                onChange={handleChange}
+                value={userInfo.answer}
+            />
+            <button className="resisBtn2" onClick={handleClick}>회원가입</button>
+        </div>
+
     );
 }
 

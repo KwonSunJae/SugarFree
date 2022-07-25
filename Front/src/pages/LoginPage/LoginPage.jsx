@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { Route, useNavigate } from 'react-router-dom';
 import axios from '../../utils/api';
-import { MyMainPage } from '../MainPage/My';
 import setAuthorizationToken from "../../utils/auth_login"
+import './LoginPage.css';
 
 axios.defaults.withCredentials = true;
 
@@ -58,21 +58,21 @@ const InputField = ({ data, onChange }) => {
 
                 .then((res) => {
                     const result = res.data.result;
-                    
-                    
+
+
                     console.log("response : " + result);
                     if (result === true) {
                         //로그인 성공하면 페이지 변경, 나중에 추가되면 변경 예정
-                        
-                        const token  = res.data.token;
-                        localStorage.setItem('jwtToken',token);
+
+                        const token = res.data.token;
+                        localStorage.setItem('jwtToken', token);
                         // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
                         setAuthorizationToken(token);
                         console.log(token)
                         navigate(`/main/${data.id}`);
-                        
+
                     } else {
-                        const token  = res.data.token;
+                        const token = res.data.token;
                         setAuthorizationToken(token);
                         if (result === "id invalid") {
                             alert("Wrong Id. Please Check Again");
@@ -81,7 +81,7 @@ const InputField = ({ data, onChange }) => {
 
                         }
                     }
-                    
+
                 }
                 )
                 .catch(error => {
@@ -95,18 +95,20 @@ const InputField = ({ data, onChange }) => {
     };
 
     return (
-        <>
+        <div className='loginPage'>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
             </style>
-            <p className="font">ID</p>
+
+            <p className="title">로그인</p>
+            <p className="font">아이디</p>
             <input className='input'
                 type="text"
                 placeholder='ID'
                 name="id"
                 onChange={handleChange}
                 value={data.id} />
-            <p className='font'>PASSWORD</p>
+            <p className='font'>비밀번호</p>
             <input className='input'
                 type="password"
                 placeholder='PWD'
@@ -115,15 +117,14 @@ const InputField = ({ data, onChange }) => {
                 value={data.pw} />
             <br />
 
-            <button onClick={handleClick} onMouseEnter={click} onMouseLeave={click} className="imgbutton" type="button">
-                <img src={clicked ? "/img/btn_login_light_250.png" : "/img/btn_login_dark_250.png"} height="80" width="80" />
-
+            <button onClick={handleClick} onMouseEnter={click} onMouseLeave={click} className="button" type="button">
+                로그인
             </button>
-            <button onClick={page2Register} onMouseEnter={cclick} onMouseLeave={cclick} className="imgbutton" type="button">
-                <img src={cclicked ? "/img/btn_join_light_250.png" : "/img/btn_join_dark_250.png"} height="80" width="80" />
-
+            <button onClick={page2Register} onMouseEnter={cclick} onMouseLeave={cclick} className="button" type="button">
+                회원가입
             </button>
-        </>
+        </div>
+
     );
 }
 

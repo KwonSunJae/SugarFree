@@ -50,28 +50,28 @@ const MainPage = () => {
 
             <div className="sugar_box" style={{ position: "relative" }}>
 
-              <div style={{ position: "absolute", left: 200, top: 220, opacity: 0.6 }}>
+              <div style={{ position: "absolute", left: 200, top: 190, opacity: 0.6 }}>
                 <Bounce emoji_num={getRandom(1, 32)} />
               </div>
-              <div style={{ position: "absolute", left: 150, top: 210, opacity: 0.6 }}>
+              <div style={{ position: "absolute", left: 150, top: 190, opacity: 0.6 }}>
                 <Bounce emoji_num={getRandom(1, 32)} />
               </div>
-              <div style={{ position: "absolute", left: 250, top: 210, opacity: 0.6 }}>
+              <div style={{ position: "absolute", left: 210, top: 95, opacity: 0.6 }}>
                 <Bounce emoji_num={getRandom(1, 32)} />
               </div>
-              <div style={{ position: "absolute", left: 110, top: 170, opacity: 0.6 }}>
+              <div style={{ position: "absolute", left: 110, top: 120, opacity: 0.6 }}>
                 <Bounce emoji_num={getRandom(1, 32)} />
               </div>
-              <div style={{ position: "absolute", left: 160, top: 160, opacity: 0.6 }}>
+              <div style={{ position: "absolute", left: 150, top: 140, opacity: 0.6 }}>
                 <Bounce emoji_num={getRandom(1, 32)} />
               </div>
-              <div style={{ position: "absolute", left: 200, top: 170, opacity: 0.6 }}>
+              <div style={{ position: "absolute", left: 200, top: 140, opacity: 0.6 }}>
                 <Bounce emoji_num={getRandom(1, 32)} />
               </div>
-              <div style={{ position: "absolute", left: 240, top: 160, opacity: 0.6 }}>
+              <div style={{ position: "absolute", left: 250, top: 140, opacity: 0.6 }}>
                 <Bounce emoji_num={getRandom(1, 32)} />
               </div>
-              <div style={{ position: "absolute", left: 290, top: 170, opacity: 0.6 }}>
+              <div style={{ position: "absolute", left: 150, top: 90, opacity: 0.6 }}>
                 <Bounce emoji_num={getRandom(1, 32)} />
               </div>
 
