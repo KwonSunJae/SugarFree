@@ -32,7 +32,10 @@ app.use(express.urlencoded({ extended: true }));
 
 const api = require("./src/routes/index");
 app.use("/", api);
-
+app.use((err, req, res, next) => {
+    logger.error(err.stack);
+    res.json({ result: "failed", message: err.message });
+});
 const PORT = process.env.PORT || 5051;
 app.listen(PORT, () => {
     logger.info(`Server ON PORT=${PORT}`);

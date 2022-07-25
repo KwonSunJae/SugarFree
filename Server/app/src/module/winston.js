@@ -37,12 +37,12 @@ const logger = winston.createLogger({
             maxFiles: 30, // 30일치 로그 파일 저장
         }),
         // warn 레벨 로그를 저장할 파일 설정
-        new winstonDaily({
-            level: "warn",
-            dirname: logDir,
-            filename: `%DATE%.warn.log`, // file 이름 날짜로 저장
-            maxFiles: 30, // 30일치 로그 파일 저장
-        }),
+        // new winstonDaily({
+        //     level: "warn",
+        //     dirname: logDir,
+        //     filename: `%DATE%.warn.log`, // file 이름 날짜로 저장
+        //     maxFiles: 30, // 30일치 로그 파일 저장
+        // }),
         // error 레벨 로그를 저장할 파일 설정
         new winstonDaily({
             level: "error",

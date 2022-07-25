@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const multerOS = require("../module/multerOS");
 
 const userCtrl = require("../controller/user.controller");
 const candyCtrl = require("../controller/candy.controller");
@@ -15,5 +16,6 @@ router.post("/api/login", userCtrl.process.login);
 router.post("/api/mycandy", candyCtrl.process.myCandy);
 router.post("/api/givecandy", candyCtrl.process.giveCandy);
 router.post("/api/showcandy", candyCtrl.process.showCandy);
+router.all("/api/uploadImage", multerOS.single("img") ,candyCtrl.process.setCandyImage);
 
 module.exports = router;

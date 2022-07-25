@@ -37,6 +37,10 @@ sudo rm -rf default
 
 sudo cp /home/ubuntu/SugarFree/.config/front/default .
 
+echo "=============================================="
+echo "ssl Certifications"
+echo "=============================================="
+
 #certbot을 통해 ssl 적용
 sudo apt-get install -y snapd
 sudo snap install  core; sudo snap refresh core
@@ -44,12 +48,17 @@ sudo apt-get remove -y certbot
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
+echo "=============================================="
+echo "Building Web Projects"
+echo "=============================================="
+
 cd /home/ubuntu/SugarFree/Front
 yarn install
 yarn build
 
+echo "=============================================="
+echo "ssl Deploy"
+echo "=============================================="
+
 sudo certbot --nginx
-
-
-
 sudo systemctl restart nginx
