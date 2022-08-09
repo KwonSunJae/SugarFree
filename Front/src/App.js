@@ -14,7 +14,7 @@ import { SelectGiftPage } from "./pages/GiveCandyPage";
 import { WriteMessagePage } from "./pages/GiveCandyPage";
 import { CheckGiveCandyPage } from "./pages/GiveCandyPage";
 import { SettingPage } from "./pages/SettingPage";
-
+import { SelectImagePage } from "./pages/GiveCandyPage";
 
 
 const App = () => {
@@ -27,6 +27,7 @@ const App = () => {
       <Route path="/login" element={<LoginPage/>} />
       <Route path="/register" element={<RegisterPage/>} />
       <Route path="/givecandy" element={<GiveCandyPage/>} />
+      <Route path = "/givecandy/image" element ={<SelectImagePage/>} />
       <Route path="/givecandy/input-name" element={<InputNamePage/>} />
       <Route path="/givecandy/input-name/type-select" element={<TypeSelectPage/>} />
       <Route path="/givecandy/input-name/type-select/select-gift" element={<SelectGiftPage/>} />
