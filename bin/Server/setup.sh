@@ -12,7 +12,7 @@ sudo apt-get install -y nodejs
 sudo apt install -y npm
 node -v
 npm -v 
-sudo npm install -g forever
+sudo npm install -g pm2
 
 sudo apt install -y certbot
 # git clone repository
@@ -34,7 +34,11 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 cd /home/ubuntu/SugarFree/Server/app
 npm install
 
-forever start server.js
+pm2 status
+
+pm2 kill
+
+pm2 start ecosystem.config.js
 
 sudo certbot --nginx
 

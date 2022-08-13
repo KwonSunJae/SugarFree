@@ -37,7 +37,7 @@ jobs:
           host: ${{ secrets.BACK_DEV_HOST }}
           username: ${{ secrets.USER }}
           script: |
-            forever stop 0
+            pm2 kill
 
       - name: check_Stopserver
         uses: 8398a7/action-slack@v3
@@ -84,7 +84,7 @@ jobs:
           username: ${{ secrets.USER }}
           script: |
             cd SugarFree/Server/app
-            forever start server.js
+            pm2 start ecosystem.config.js
             
       - name: check_runons
         uses: 8398a7/action-slack@v3
